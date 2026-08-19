@@ -7,8 +7,258 @@
 /* =========================================================
    SONG DATABASE
 ========================================================= */
-
 const songs = [
+    {
+        title: "A SMILE IN YOUR HEART",
+        artist: "Ariel Rivera",
+        youtube: "auWvT4gVUhw"
+    },
+
+    {
+        title: "ALWAYS",
+        artist: "DANIEL CAESAR",
+        youtube: "dqlf45uFd8Y"
+    },
+
+    {
+        title: "AKING PAGMAMAHAL",
+        artist: "Repablikan",
+        youtube: "nxaHzEgjsU0"
+    },
+
+    {
+        title: "A PERFECT CHRISTMAS",
+        artist: "Jose Mari Chan",
+        youtube: "MRagA5nB8-I"
+    },
+
+    {
+        title: "AGAINST ALL ODDS",
+        artist: "Phil Collins",
+        youtube: "BJyUEsNC-_s"
+    },
+
+    {
+        title: "Awitin Mo, Isasayaw Ko",
+        artist: "VST & Company",
+        youtube: "woZYQ_QXY0o"
+    },
+
+    {
+        title: "ARAW GABI",
+        artist: "MICHAEL PANGILINAN",
+        youtube: "X_U_AnlIkIc"
+    },
+
+    {
+        title: "APRIL BOY MEDLEY",
+        artist: "APRIL BOY",
+        youtube: "L2Y5wnhyfNI"
+    },
+
+    {
+        title: "Anong Nangyari Sa Ating Dalawa",
+        artist: "AIZA SIGUERRA",
+        youtube: "kQGaVFbD1b0"
+    },
+
+    {
+        title: "ANGELS BROUGHT ME HERE",
+        artist: "Guy Sebastian",
+        youtube: "VRs5ZBH2YzM"
+    },
+
+    {
+        title: "ANGEL",
+        artist: "SHAGGY",
+        youtube: "GjivXHAoLS4"
+    },
+
+    {
+        title: "AKALA",
+        artist: "PAROKYA NI EDGAR",
+        youtube: "JQuy4jr5QqE"
+    },
+
+    {
+        title: "ANG HULING EL BIMBO",
+        artist: "Eraserheads",
+        youtube: "1hAmBPNhaFs"
+    },
+
+    {
+        title: "ANAK",
+        artist: "Freddie Aguilar",
+        youtube: "v5_CXC8HVzI"
+    },
+
+    {
+        title: "AKING AMA",
+        artist: "Lil' Coli",
+        youtube: "jDClKW4Rh4Q"
+    },
+
+    {
+        title: "Always Be My Baby",
+        artist: "David Cook",
+        youtube: "zcUz-skZjdQ"
+    },
+
+    {
+        title: "ALWAYS",
+        artist: "Atlantic Starr",
+        youtube: "jrlqWiRto1U"
+    },
+
+    {
+        title: "ALWAYS",
+        artist: "Bon Jovi",
+        youtube: "zVkP4Qd1S10"
+    },
+
+    {
+        title: "ALIPIN AKO",
+        artist: "Liezel Garcia",
+        youtube: "vOGR8oT0dD4"
+    },
+
+    {
+        title: "ALIPIN",
+        artist: "Shamrock",
+        youtube: "Ch8WawV8Js0"
+    },
+
+    {
+        title: "ALE",
+        artist: "The Bloomfields",
+        youtube: "BAXQW1ZEhWU"
+    },
+
+    {
+        title: "Ang Tanging Alay Ko",
+        artist: "KARAOKE",
+        youtube: "P6496CVcfps"
+    },
+
+    {
+        title: "Ala ala",
+        artist: "Mm Madrigal",
+        youtube: "k_i6Rctnpls"
+    },
+
+    {
+        title: "Alaala",
+        artist: "Freddie Aguilar",
+        youtube: "qRDXGz3MCnk"
+    },
+
+    {
+        title: "Ako'y Sayo at Ika'y Akin Lamang",
+        artist: "IAXE Band",
+        youtube: "aPtjHNYmBPs"
+    },
+
+    {
+        title: "ALL OF ME",
+        artist: "John Legend",
+        youtube: "6VoT-KrseHA"
+    },
+
+    {
+        title: "All Star",
+        artist: "Smash Mouth",
+        youtube: "ABOYo7ioQJo"
+    },
+
+    {
+        title: "All That I Need",
+        artist: "Boyzone",
+        youtube: "JgJWYTr9znc"
+    },
+
+    {
+        title: "ALL THE LOVE IN THE WORLD",
+        artist: "The Corrs",
+        youtube: "MjfEJChi3B4"
+    },
+
+    {
+        title: "ALL OUT OF LOVE",
+        artist: "O-Town",
+        youtube: "05e33y630oo"
+    },
+
+    {
+        title: "ALL I NEED",
+        artist: "shamrock",
+        youtube: "dyCaFoJDyJM"
+    },
+
+    {
+        title: "ALL MY LIFE",
+        artist: "America",
+        youtube: "IcQ8noPu8hQ"
+    },
+
+    {
+        title: "ALL I WANT FOR CHRISTMAS",
+        artist: "Mariah Carey",
+        youtube: "l3iEnBThkIc"
+    },
+
+    {
+        title: "ALL I WANT",
+        artist: "OLIVIA RODRIGO",
+        youtube: "DqqsTljY3PA"
+    },
+
+    {
+        title: "ALL I ASK",
+        artist: "ADELE",
+        youtube: "Y7YaEKYjOTs"
+    },
+
+    {
+        title: "ALL BY MYSELF",
+        artist: "Céline Dion",
+        youtube: "eiTOcxAmyLA"
+    },
+
+    {
+        title: "AAMININ KO",
+        artist: "6 Cyclemind",
+        youtube: "CCwYXIe-LJw"
+    },
+
+    {
+        title: "A THOUSAND YEARS",
+        artist: "Christina Perri",
+        youtube: "85zr83teaug"
+    },
+
+    {
+        title: "A THOUSAND MILES",
+        artist: "Vanessa Carlton",
+        youtube: "tT_L8gRvMN4"
+    },
+
+    {
+        title: "UNWELL",
+        artist: "MACTCHBOX TWENTY",
+        youtube: "i_nNeeRs8ig"
+    },
+
+    {
+        title: "YOU'LL BE SAFE HERE",
+        artist: "RIVERMAYA",
+        youtube: "P4ApYxP0kos"
+    },
+
+    {
+        title: "UPSIDE DOWN",
+        artist: "6CYLEMIND",
+        youtube: "H1TAEeO5YlE"
+    },
 
     {
         title: "Heaven Knows",
@@ -39,7 +289,6 @@ const songs = [
         artist: "Karaoke",
         youtube: "feskSn7ZI6Y"
     }
-
 ];
 
 
@@ -56,6 +305,12 @@ let youtubePlayer = null;
 let pendingSongIndex = null;
 
 let isPlaying = false;
+
+let isPlayerReady = false;
+
+let isChangingSong = false;
+
+let endHandled = false;
 
 
 /* =========================================================
@@ -111,11 +366,28 @@ document.addEventListener(
 
 function startHost() {
 
-    document.getElementById("hostApp").style.display =
-        "block";
+    const hostApp =
+        document.getElementById("hostApp");
 
-    document.getElementById("remoteApp").style.display =
-        "none";
+    const remoteApp =
+        document.getElementById("remoteApp");
+
+
+    if (hostApp) {
+
+        hostApp.style.display =
+            "block";
+
+    }
+
+
+    if (remoteApp) {
+
+        remoteApp.style.display =
+            "none";
+
+    }
+
 
     startHostPeer();
 
@@ -130,11 +402,28 @@ function startHost() {
 
 function startRemote() {
 
-    document.getElementById("hostApp").style.display =
-        "none";
+    const hostApp =
+        document.getElementById("hostApp");
 
-    document.getElementById("remoteApp").style.display =
-        "block";
+    const remoteApp =
+        document.getElementById("remoteApp");
+
+
+    if (hostApp) {
+
+        hostApp.style.display =
+            "none";
+
+    }
+
+
+    if (remoteApp) {
+
+        remoteApp.style.display =
+            "block";
+
+    }
+
 
     startRemotePeer();
 
@@ -149,6 +438,7 @@ function startHostPeer() {
 
     peer = new Peer();
 
+
     peer.on(
         "open",
         function (id) {
@@ -158,10 +448,19 @@ function startHostPeer() {
                     Math.max(0, id.length - 8)
                 );
 
-            document.getElementById(
-                "roomCode"
-            ).textContent =
-                code.toUpperCase();
+
+            const roomCode =
+                document.getElementById(
+                    "roomCode"
+                );
+
+
+            if (roomCode) {
+
+                roomCode.textContent =
+                    code.toUpperCase();
+
+            }
 
 
             const remoteUrl =
@@ -171,19 +470,35 @@ function startHostPeer() {
                 encodeURIComponent(id);
 
 
-            document.getElementById(
-                "remoteLink"
-            ).textContent =
-                remoteUrl;
+            const remoteLink =
+                document.getElementById(
+                    "remoteLink"
+                );
+
+
+            if (remoteLink) {
+
+                remoteLink.textContent =
+                    remoteUrl;
+
+            }
 
 
             generateQRCode(remoteUrl);
 
 
-            document.getElementById(
-                "connectionStatus"
-            ).textContent =
-                "🟢 Room Ready";
+            const connectionStatus =
+                document.getElementById(
+                    "connectionStatus"
+                );
+
+
+            if (connectionStatus) {
+
+                connectionStatus.textContent =
+                    "🟢 Room Ready";
+
+            }
 
         }
     );
@@ -193,19 +508,32 @@ function startHostPeer() {
         "connection",
         function (connection) {
 
-            remoteConnections.push(connection);
+            remoteConnections.push(
+                connection
+            );
 
-            document.getElementById(
-                "phoneStatus"
-            ).textContent =
-                "📱 Phone Connected";
+
+            const phoneStatus =
+                document.getElementById(
+                    "phoneStatus"
+                );
+
+
+            if (phoneStatus) {
+
+                phoneStatus.textContent =
+                    "📱 Phone Connected";
+
+            }
 
 
             connection.on(
                 "open",
                 function () {
 
-                    sendState(connection);
+                    sendState(
+                        connection
+                    );
 
                 }
             );
@@ -232,14 +560,17 @@ function startHostPeer() {
                             c => c !== connection
                         );
 
+
                     if (
                         remoteConnections.length === 0
                     ) {
 
-                        document.getElementById(
-                            "phoneStatus"
-                        ).textContent =
-                            "📱 No phone connected";
+                        if (phoneStatus) {
+
+                            phoneStatus.textContent =
+                                "📱 No phone connected";
+
+                        }
 
                     }
 
@@ -259,10 +590,19 @@ function startHostPeer() {
                 error
             );
 
-            document.getElementById(
-                "connectionStatus"
-            ).textContent =
-                "🔴 Connection Error";
+
+            const connectionStatus =
+                document.getElementById(
+                    "connectionStatus"
+                );
+
+
+            if (connectionStatus) {
+
+                connectionStatus.textContent =
+                    "🔴 Connection Error";
+
+            }
 
         }
     );
@@ -293,10 +633,18 @@ function startRemotePeer() {
                 "open",
                 function () {
 
-                    document.getElementById(
-                        "remoteConnectionStatus"
-                    ).textContent =
-                        "🟢 Connected";
+                    const status =
+                        document.getElementById(
+                            "remoteConnectionStatus"
+                        );
+
+
+                    if (status) {
+
+                        status.textContent =
+                            "🟢 Connected";
+
+                    }
 
                 }
             );
@@ -318,10 +666,18 @@ function startRemotePeer() {
                 "close",
                 function () {
 
-                    document.getElementById(
-                        "remoteConnectionStatus"
-                    ).textContent =
-                        "🔴 Disconnected";
+                    const status =
+                        document.getElementById(
+                            "remoteConnectionStatus"
+                        );
+
+
+                    if (status) {
+
+                        status.textContent =
+                            "🔴 Disconnected";
+
+                    }
 
                 }
             );
@@ -331,10 +687,18 @@ function startRemotePeer() {
                 "error",
                 function () {
 
-                    document.getElementById(
-                        "remoteConnectionStatus"
-                    ).textContent =
-                        "🔴 Connection Error";
+                    const status =
+                        document.getElementById(
+                            "remoteConnectionStatus"
+                        );
+
+
+                    if (status) {
+
+                        status.textContent =
+                            "🔴 Connection Error";
+
+                    }
 
                 }
             );
@@ -352,10 +716,19 @@ function startRemotePeer() {
                 error
             );
 
-            document.getElementById(
-                "remoteConnectionStatus"
-            ).textContent =
-                "🔴 Connection Failed";
+
+            const status =
+                document.getElementById(
+                    "remoteConnectionStatus"
+                );
+
+
+            if (status) {
+
+                status.textContent =
+                    "🔴 Connection Failed";
+
+            }
 
         }
     );
@@ -374,7 +747,14 @@ function generateQRCode(url) {
             "qrcode"
         );
 
+
+    if (!qr) {
+        return;
+    }
+
+
     qr.innerHTML = "";
+
 
     if (
         typeof QRCode !== "undefined"
@@ -400,10 +780,19 @@ function generateQRCode(url) {
 
 function copyRemoteLink() {
 
-    const link =
+    const element =
         document.getElementById(
             "remoteLink"
-        ).textContent;
+        );
+
+
+    if (!element) {
+        return;
+    }
+
+
+    const link =
+        element.textContent;
 
 
     if (
@@ -479,7 +868,9 @@ function broadcastState() {
     remoteConnections.forEach(
         function (connection) {
 
-            sendState(connection);
+            sendState(
+                connection
+            );
 
         }
     );
@@ -571,8 +962,10 @@ function handleHostState(data) {
     currentSong =
         data.currentSong;
 
+
     reservedSongs =
         data.reservedSongs || [];
+
 
     isPlaying =
         data.isPlaying;
@@ -587,16 +980,32 @@ function handleHostState(data) {
     }
 
 
-    document.getElementById(
-        "remoteSongTitle"
-    ).textContent =
-        song.title;
+    const title =
+        document.getElementById(
+            "remoteSongTitle"
+        );
 
 
-    document.getElementById(
-        "remoteArtist"
-    ).textContent =
-        song.artist;
+    const artist =
+        document.getElementById(
+            "remoteArtist"
+        );
+
+
+    if (title) {
+
+        title.textContent =
+            song.title;
+
+    }
+
+
+    if (artist) {
+
+        artist.textContent =
+            song.artist;
+
+    }
 
 
     renderRemoteSongs();
@@ -691,7 +1100,14 @@ function remoteRemoveReserve(index) {
 
 function loadSong(index) {
 
-    if (index < 0) {
+    if (!songs.length) {
+        return;
+    }
+
+
+    if (
+        index < 0
+    ) {
 
         index =
             songs.length - 1;
@@ -699,39 +1115,84 @@ function loadSong(index) {
     }
 
 
-    if (index >= songs.length) {
+    if (
+        index >= songs.length
+    ) {
 
         index = 0;
 
     }
 
 
-    currentSong = index;
-
-
     const song =
-        songs[currentSong];
+        songs[index];
 
 
-    document.getElementById(
-        "songTitle"
-    ).textContent =
-        song.title;
+    if (!song) {
+        return;
+    }
 
 
-    document.getElementById(
-        "artist"
-    ).textContent =
-        song.artist;
+    currentSong =
+        index;
+
+
+    pendingSongIndex =
+        index;
+
+
+    endHandled =
+        false;
+
+
+    isChangingSong =
+        true;
+
+
+    const title =
+        document.getElementById(
+            "songTitle"
+        );
+
+
+    const artist =
+        document.getElementById(
+            "artist"
+        );
+
+
+    if (title) {
+
+        title.textContent =
+            song.title;
+
+    }
+
+
+    if (artist) {
+
+        artist.textContent =
+            song.artist;
+
+    }
 
 
     renderSongs();
 
 
-    if (!youtubePlayer) {
+    broadcastState();
 
-        pendingSongIndex =
-            index;
+
+    /*
+       PLAYER NOT READY YET
+    */
+
+    if (
+        !youtubePlayer ||
+        !isPlayerReady
+    ) {
+
+        isPlaying = false;
 
         broadcastState();
 
@@ -740,12 +1201,27 @@ function loadSong(index) {
     }
 
 
-    youtubePlayer.loadVideoById(
-        song.youtube
-    );
+    try {
+
+        youtubePlayer.loadVideoById(
+            song.youtube
+        );
+
+    } catch (error) {
+
+        console.error(
+            "YouTube load error:",
+            error
+        );
+
+    }
 
 
     isPlaying = false;
+
+    isChangingSong =
+        false;
+
 
     broadcastState();
 
@@ -758,40 +1234,103 @@ function loadSong(index) {
 
 function onYouTubePlayerReady(event) {
 
+    youtubePlayer =
+        event.target;
+
+
+    isPlayerReady =
+        true;
+
+
+    let index =
+        currentSong;
+
+
     if (
         pendingSongIndex !== null
     ) {
 
-        const index =
+        index =
             pendingSongIndex;
 
-        pendingSongIndex =
-            null;
+    }
 
 
-        const song =
-            songs[index];
+    pendingSongIndex =
+        null;
 
 
-        event.target.loadVideoById(
+    const song =
+        songs[index];
+
+
+    if (!song) {
+        return;
+    }
+
+
+    currentSong =
+        index;
+
+
+    endHandled =
+        false;
+
+
+    try {
+
+        event.target.cueVideoById(
             song.youtube
         );
 
+    } catch (error) {
 
-    } else {
-
-        const song =
-            songs[currentSong];
-
-
-        event.target.loadVideoById(
-            song.youtube
+        console.error(
+            "YouTube ready error:",
+            error
         );
 
     }
 
 
-    isPlaying = false;
+    const title =
+        document.getElementById(
+            "songTitle"
+        );
+
+
+    const artist =
+        document.getElementById(
+            "artist"
+        );
+
+
+    if (title) {
+
+        title.textContent =
+            song.title;
+
+    }
+
+
+    if (artist) {
+
+        artist.textContent =
+            song.artist;
+
+    }
+
+
+    renderSongs();
+
+
+    isPlaying =
+        false;
+
+
+    isChangingSong =
+        false;
+
 
     broadcastState();
 
@@ -805,13 +1344,35 @@ function onYouTubePlayerReady(event) {
 function onYouTubePlayerStateChange(event) {
 
     if (
+        !window.YT ||
+        !YT.PlayerState
+    ) {
+
+        return;
+
+    }
+
+
+    if (
         event.data ===
         YT.PlayerState.PLAYING
     ) {
 
-        isPlaying = true;
+        isPlaying =
+            true;
+
+
+        endHandled =
+            false;
+
+
+        isChangingSong =
+            false;
+
 
         broadcastState();
+
+        return;
 
     }
 
@@ -821,9 +1382,13 @@ function onYouTubePlayerStateChange(event) {
         YT.PlayerState.PAUSED
     ) {
 
-        isPlaying = false;
+        isPlaying =
+            false;
+
 
         broadcastState();
+
+        return;
 
     }
 
@@ -833,18 +1398,51 @@ function onYouTubePlayerStateChange(event) {
         YT.PlayerState.ENDED
     ) {
 
-        isPlaying = false;
+        /*
+           IMPORTANT:
+           Prevent duplicate nextSong()
+           calls from YouTube.
+        */
+
+        if (
+            endHandled
+        ) {
+
+            return;
+
+        }
+
+
+        endHandled =
+            true;
+
+
+        isPlaying =
+            false;
+
 
         broadcastState();
 
 
+        /*
+           Small delay so YouTube can
+           completely finish the old video
+           before loading the next one.
+        */
+
         setTimeout(
             function () {
 
-                nextSong();
+                if (
+                    !isRemote
+                ) {
+
+                    nextSong();
+
+                }
 
             },
-            300
+            500
         );
 
     }
@@ -857,6 +1455,55 @@ function onYouTubePlayerStateChange(event) {
 ========================================================= */
 
 function createYouTubePlayer() {
+
+    if (
+        isRemote
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        typeof YT === "undefined" ||
+        typeof YT.Player === "undefined"
+    ) {
+
+        console.error(
+            "YouTube API is not ready."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        youtubePlayer
+    ) {
+
+        return;
+
+    }
+
+
+    const playerElement =
+        document.getElementById(
+            "youtubePlayer"
+        );
+
+
+    if (!playerElement) {
+
+        console.error(
+            "youtubePlayer element not found."
+        );
+
+        return;
+
+    }
+
 
     youtubePlayer =
         new YT.Player(
@@ -898,6 +1545,33 @@ function createYouTubePlayer() {
 
 function nextSong() {
 
+    if (!songs.length) {
+        return;
+    }
+
+
+    /*
+       Stop duplicate next calls.
+    */
+
+    if (
+        isChangingSong
+    ) {
+
+        return;
+
+    }
+
+
+    endHandled =
+        false;
+
+
+    /*
+       PRIORITY:
+       RESERVED SONG FIRST
+    */
+
     if (
         reservedSongs.length > 0
     ) {
@@ -906,22 +1580,42 @@ function nextSong() {
             reservedSongs.shift();
 
 
+        renderSongs();
+
+        broadcastState();
+
+
         loadSong(
             nextIndex
         );
 
-
-        renderSongs();
-
-        broadcastState();
 
         return;
 
     }
 
 
+    /*
+       NO RESERVED SONG
+       → NEXT SONG IN DATABASE
+    */
+
+    let nextIndex =
+        currentSong + 1;
+
+
+    if (
+        nextIndex >= songs.length
+    ) {
+
+        nextIndex =
+            0;
+
+    }
+
+
     loadSong(
-        currentSong + 1
+        nextIndex
     );
 
 }
@@ -933,8 +1627,27 @@ function nextSong() {
 
 function previousSong() {
 
+    if (!songs.length) {
+        return;
+    }
+
+
+    let previousIndex =
+        currentSong - 1;
+
+
+    if (
+        previousIndex < 0
+    ) {
+
+        previousIndex =
+            songs.length - 1;
+
+    }
+
+
     loadSong(
-        currentSong - 1
+        previousIndex
     );
 
 }
@@ -946,8 +1659,13 @@ function previousSong() {
 
 function togglePlay() {
 
-    if (!youtubePlayer) {
+    if (
+        !youtubePlayer ||
+        !isPlayerReady
+    ) {
+
         return;
+
     }
 
 
@@ -962,8 +1680,9 @@ function togglePlay() {
 
         youtubePlayer.pauseVideo();
 
+    }
 
-    } else {
+    else {
 
         youtubePlayer.playVideo();
 
@@ -977,6 +1696,16 @@ function togglePlay() {
 ========================================================= */
 
 function reserveSong(index) {
+
+    if (
+        index < 0 ||
+        index >= songs.length
+    ) {
+
+        return;
+
+    }
+
 
     if (
         index === currentSong
@@ -1034,13 +1763,21 @@ function removeReserve(index) {
 
 function searchSongs() {
 
+    const input =
+        document.getElementById(
+            "search"
+        );
+
+
+    if (!input) {
+        return;
+    }
+
+
     const search =
-        document
-            .getElementById(
-                "search"
-            )
-            .value
-            .toLowerCase();
+        input.value
+            .toLowerCase()
+            .trim();
 
 
     renderSongs(
@@ -1076,17 +1813,31 @@ function renderSongs(
         function (song, index) {
 
             if (
-
-                !song.title
-                    .toLowerCase()
-                    .includes(search)
-
-                &&
-
+                !song ||
+                !song.title ||
                 !song.artist
-                    .toLowerCase()
-                    .includes(search)
+            ) {
 
+                return;
+
+            }
+
+
+            const title =
+                String(
+                    song.title
+                ).toLowerCase();
+
+
+            const artist =
+                String(
+                    song.artist
+                ).toLowerCase();
+
+
+            if (
+                !title.includes(search) &&
+                !artist.includes(search)
             ) {
 
                 return;
@@ -1225,13 +1976,21 @@ function renderSongs(
 
 function searchRemoteSongs() {
 
+    const input =
+        document.getElementById(
+            "remoteSearch"
+        );
+
+
+    if (!input) {
+        return;
+    }
+
+
     const search =
-        document
-            .getElementById(
-                "remoteSearch"
-            )
-            .value
-            .toLowerCase();
+        input.value
+            .toLowerCase()
+            .trim();
 
 
     renderRemoteSongs(
@@ -1267,17 +2026,31 @@ function renderRemoteSongs(
         function (song, index) {
 
             if (
-
-                !song.title
-                    .toLowerCase()
-                    .includes(search)
-
-                &&
-
+                !song ||
+                !song.title ||
                 !song.artist
-                    .toLowerCase()
-                    .includes(search)
+            ) {
 
+                return;
+
+            }
+
+
+            const title =
+                String(
+                    song.title
+                ).toLowerCase();
+
+
+            const artist =
+                String(
+                    song.artist
+                ).toLowerCase();
+
+
+            if (
+                !title.includes(search) &&
+                !artist.includes(search)
             ) {
 
                 return;
@@ -1313,7 +2086,6 @@ function renderRemoteSongs(
                     </span>
 
                 `;
-
 
             }
 
@@ -1432,6 +2204,11 @@ function renderRemoteQueue() {
                 songs[index];
 
 
+            if (!song) {
+                return;
+            }
+
+
             const item =
                 document.createElement(
                     "div"
@@ -1477,7 +2254,9 @@ function renderRemoteQueue() {
 window.onYouTubeIframeAPIReady =
     function () {
 
-        if (!isRemote) {
+        if (
+            !isRemote
+        ) {
 
             createYouTubePlayer();
 
