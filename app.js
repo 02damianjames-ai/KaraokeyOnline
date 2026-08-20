@@ -9,27 +9,465 @@
 ========================================================= */
 const songs = [
     {
+        title: "BATANG BATA KA PA",
+        artist: "APO HIKING SOCIETY",
+        youtube: "KOZ5-FoaTEs"
+    },
+
+    {
+        title: "BUILD ME UP BUTTERCUP",
+        artist: "THE FOUNDATIONS",
+        youtube: "NdvQblg9Uqc"
+    },
+
+    {
+        title: "BURN",
+        artist: "USHER",
+        youtube: "pr1nFSA4r64"
+    },
+
+    {
+        title: "BUWAN",
+        artist: "JUAN CARLOS",
+        youtube: "F9qjC5G9jj8"
+    },
+
+    {
+        title: "BULOY",
+        artist: "PAROKYA NI EDGAR",
+        youtube: "vVpd28x7uyA"
+    },
+
+    {
+        title: "BUKAS NA LANG KITA MAMAHALIN",
+        artist: "LANI MISALUCHA",
+        youtube: "oE6JwOqvscc"
+    },
+
+    {
+        title: "BULAG PIPI AT BINGI",
+        artist: "FREDDIE AGUILAR",
+        youtube: "xbXzMEXD14M"
+    },
+
+    {
+        title: "BROWN EYES",
+        artist: "DESTINY CHILD",
+        youtube: "qKRfLCytKe0"
+    },
+
+    {
+        title: "BRING ME DOWN",
+        artist: "CUESHE",
+        youtube: "PGsmMBvi4YM"
+    },
+
+    {
+        title: "BREAK EVEN",
+        artist: "THE SCRIPT",
+        youtube: "eVktv-LfqYI"
+    },
+
+    {
+        title: "BORN FOR YOU",
+        artist: "DAVID PORMERANZ",
+        youtube: "Y6ir5F4y4-Y"
+    },
+
+    {
+        title: "BOMBASTIC",
+        artist: "SHAGGY",
+        youtube: "YUYmCyOsh6U"
+    },
+
+    {
+        title: "BILOG NANAMAN ANG BUWAN",
+        artist: "TROPICAL DEPRESSION",
+        youtube: "eQpNNcR-yJs"
+    },
+
+    {
+        title: "BIGLANG LIKO",
+        artist: "RON HENLEY",
+        youtube: "1-7G-cKtkQA"
+    },
+
+    {
+        title: "BIGLAAN",
+        artist: "6CYCLEMIND",
+        youtube: "IAZE8D9VlZA"
+    },
+
+    {
+        title: "BECAUSE OF YOU",
+        artist: "KEITH MARTIN",
+        youtube: "Lx_QVGevCv0"
+    },
+
+    {
+        title: "BOULEVARD",
+        artist: "DAN BYRD",
+        youtube: "Lx_QVGevCv0"
+    },
+
+    {
+        title: "BED OF ROSES",
+        artist: "BON JOVI",
+        youtube: "9F0mAiipcwM"
+    },
+
+    {
+        title: "BEFORE YOU GO",
+        artist: "LEWIS CAPALDI",
+        youtube: "FTgvsu5Feho"
+    },
+
+    {
+        title: "BEFORE I LET YOU GO",
+        artist: "FREESTYLE",
+        youtube: "KKYDz94UW3o"
+    },
+
+    {
+        title: "BEAUTIFUL SOUL",
+        artist: "JESSE MCCARTNEY",
+        youtube: "wMvgH3ysOMs"
+    },
+
+    {
+        title: "BEAUTY AND THE BEAST",
+        artist: "CELINE DION & PEABO",
+        youtube: "JzyBZHUuXnY"
+    },
+
+    {
+        title: "BEAUTIFUL IN WHITE",
+        artist: "WESTLIFE",
+        youtube: "fZyW-T0w0X4"
+    },
+
+    {
+        title: "BEAUTIFUL IN MY EYES",
+        artist: "JOSHUA KADISON",
+        youtube: "LruQapGkZSI"
+    },
+
+    {
+        title: "BEAUTIFUL GIRLS",
+        artist: "SEAN KINGSTON",
+        youtube: "h-EJCMxVLMA"
+    },
+
+    {
+        title: "BEAUTIFUL GIRL",
+        artist: "JOSI MARI CHAN",
+        youtube: "5EVxgLGKQx8"
+    },
+
+    {
+        title: "BE MY LADY",
+        artist: "MARTIN NIEVERA",
+        youtube: "UclCZ6Si7kY"
+    },
+
+    {
+        title: "BAWAL NA GAMOT",
+        artist: "WILLIE GARTE",
+        youtube: "j-vA4ty_-sQ"
+    },
+
+    {
+        title: "BANAL NA ASO SANTONG KABAYO",
+        artist: "YANO",
+        youtube: "eaJXriSSzts"
+    },
+
+    {
+        title: "BULONG",
+        artist: "DECEMBER AVENUE",
+        youtube: "Dr69oG2xVAM"
+    },
+
+    {
+        title: "BULONG",
+        artist: "KITCHIE NADAL",
+        youtube: "O2aq65azxpM"
+    },
+
+    {
+        title: "BUKO",
+        artist: "JIREH LIM",
+        youtube: "B5W9Guo_6a4"
+    },
+
+    {
+        title: "BUKSAN MO",
+        artist: "Willie Revillame",
+        youtube: "9JmLi6NynOQ"
+    },
+
+    {
+        title: "BASTA'T KASAMA KITA",
+        artist: "DINGDONG AVANZADO",
+        youtube: "lPT18BOIfqc"
+    },
+
+    {
+        title: "BEER",
+        artist: "ITCHY WORMS",
+        youtube: "C8twukz-0g0"
+    },
+
+    {
+        title: "BASKETBALL",
+        artist: "VIVA HOTBABES",
+        youtube: "hv7Jvt82clQ"
+    },
+
+    {
+        title: "BASANG BASA SA ULAN",
+        artist: "AEGIS",
+        youtube: "hHLKw2SmWz0"
+    },
+
+    {
+        title: "BANYO QUEEN",
+        artist: "ANDREW E",
+        youtube: "3N5pMZOsxb8"
+    },
+
+    {
+        title: "BAKIT NGAYON KA LANG",
+        artist: "OGIE ALCASID",
+        youtube: "KnSsOL-n9r0"
+    },
+
+    {
+        title: "BINHI",
+        artist: "ARTHUR NERY",
+        youtube: "INSsfEyFFZ0"
+    },
+
+    {
+        title: "BAKIT MAHAL PA RIN KITA",
+        artist: "ERIK SANTOS",
+        youtube: "P1xOO4G4b5U"
+    },
+
+    {
+        title: "BAKIT LABIS KITANG MAHAL",
+        artist: "BOYFRIENDS",
+        youtube: "4DfXGMnl0QA"
+    },
+
+    {
+        title: "BINALEWALA",
+        artist: "MICHAEL DUTCHI",
+        youtube: "pgZdn5xbR-A"
+    },
+
+    {
+        title: "BAKIT KUNG SINO PA",
+        artist: "LLOYD UMALI",
+        youtube: "7lBSDaXj750"
+    },
+
+    {
+        title: "BAKIT DI TOTOHANIN",
+        artist: "CAROL BANAWA",
+        youtube: "2GZyiXPAS3M"
+    },
+
+    {
+        title: "BAKIT NGA BA MAHAL KITA",
+        artist: "ROSELLE NAVA",
+        youtube: "GwPgYdRcWUQ"
+    },
+
+    {
+        title: "BAKIT BA",
+        artist: "SIAKOL",
+        youtube: "8f5MRaGQZjA"
+    },
+
+    {
+        title: "BAKIT SINTA",
+        artist: "PAUL SAPIERA",
+        youtube: "bh-n0Q0nxO0"
+    },
+
+    {
+        title: "BAKIT",
+        artist: "RACHELLE ANN GO",
+        youtube: "uShpWfVrDAI"
+    },
+
+    {
+        title: "BAKIT",
+        artist: "AEGIS",
+        youtube: "5ZC0uHO8z7U"
+    },
+
+    {
+        title: "BAKIT",
+        artist: "VEHNEE SATURNO",
+        youtube: "gM7AgDPMMl8"
+    },
+
+    {
+        title: "BAKIT",
+        artist: "IMELDA PAPIN",
+        youtube: "qkHwxpkemS0"
+    },
+
+    {
+        title: "BAKIT",
+        artist: "CUESHE",
+        youtube: "p5ifcfXvb8k"
+    },
+
+    {
+        title: "BAKIT BA IKAW",
+        artist: "Michael Pangilinan",
+        youtube: "2DyfczmSP1I"
+    },
+
+    {
+        title: "BAKIT PA BA",
+        artist: "Jay R",
+        youtube: "-hHonDPzjdM"
+    },
+
+    {
+        title: "BALIW NA PUSO",
+        artist: "Jessa Zaragoza",
+        youtube: "ULdQc6ZUtEE"
+    },
+
+    {
+        title: "BAKIT BA",
+        artist: "ERIC SANTOS",
+        youtube: "dc16YQ3mscU"
+    },
+
+    {
+        title: "BYE BYE NA",
+        artist: "RICO BLANCO",
+        youtube: "Z2g0jlx2IcM"
+    },
+
+    {
+        title: "BALIW SAYO",
+        artist: "JROA",
+        youtube: "ZXnzcLWIv2E"
+    },
+
+    {
+        title: "BYAHE",
+        artist: "JROA",
+        youtube: "rh5VT3WG2tg"
+    },
+
+    {
+        title: "BIYAHE",
+        artist: "JOSH SANTANA",
+        youtube: "RmSbWqqTofg"
+    },
+
+    {
+        title: "BAGSAKAN",
+        artist: "PAROKYA NI EDGAR",
+        youtube: "N4EpyDOodOg"
+    },
+
+    {
+        title: "BECAUSE OF YOU",
+        artist: "NE-YO",
+        youtube: "f3-BI_-8ALM"
+    },
+
+    {
+        title: "BECAUSE OF YOU",
+        artist: "Kelly Clarkson",
+        youtube: "ycEGBMAL8zA"
+    },
+
+    {
+        title: "BAD LIAR",
+        artist: "IMAGINE DRAGONS",
+        youtube: "5NnoirGWhPY"
+    },
+
+    {
+        title: "BACK TO DECEMBER",
+        artist: "TAYLOR SWIFT",
+        youtube: "AJbcV6GUPro"
+    },
+
+    {
+        title: "BACK AT ONE",
+        artist: "BRIAN MCKNIGHT",
+        youtube: "u8tYUcIGlAg"
+    },
+
+    {
+        title: "AKIN KA NALANG",
+        artist: "The Itchyworms",
+        youtube: "v8sJfzhnwOM"
+    },
+
+    {
+        title: "A WHOLE NEW WORLD",
+        artist: "ZAYN, ZHAVIA WARD",
+        youtube: "ree448dqCNI"
+    },
+
+    {
+        title: "ANTUKIN",
+        artist: "RICO BLANCO",
+        youtube: "rPQQq0CEZ0M"
+    },
+
+    {
+        title: "AYOKO NA SANA",
+        artist: "Michael Pangilinan",
+        youtube: "pXgQ5LRComU"
+    },
+
+    {
+        title: "ALL OR NOTHING",
+        artist: "O TOWN",
+        youtube: "8bGNGbF36wY"
+    },
+
+    {
+        title: "ALL OF ME",
+        artist: "JOHN LEGEND",
+        youtube: "e8LksR_zdY8"
+    },
+
+    {
+        title: "A PERFECT CHRISTMAS",
+        artist: "JOSE MARI CHAN",
+        youtube: "D4QM2flrXFc"
+    },
+
+    {
+        title: "Always",
+        artist: "Daniel Caesar",
+        youtube: "PhNazAWo8K8"
+    },
+
+    {
         title: "A SMILE IN YOUR HEART",
         artist: "Ariel Rivera",
         youtube: "auWvT4gVUhw"
     },
 
     {
-        title: "ALWAYS",
-        artist: "DANIEL CAESAR",
-        youtube: "dqlf45uFd8Y"
-    },
-
-    {
         title: "AKING PAGMAMAHAL",
         artist: "Repablikan",
         youtube: "nxaHzEgjsU0"
-    },
-
-    {
-        title: "A PERFECT CHRISTMAS",
-        artist: "Jose Mari Chan",
-        youtube: "MRagA5nB8-I"
     },
 
     {
@@ -71,7 +509,7 @@ const songs = [
     {
         title: "ANGEL",
         artist: "SHAGGY",
-        youtube: "GjivXHAoLS4"
+        youtube: "GuzktcTTXgY"
     },
 
     {
@@ -107,7 +545,7 @@ const songs = [
     {
         title: "ALWAYS",
         artist: "Atlantic Starr",
-        youtube: "jrlqWiRto1U"
+        youtube: "nU6ILDECqwo"
     },
 
     {
@@ -159,15 +597,9 @@ const songs = [
     },
 
     {
-        title: "ALL OF ME",
-        artist: "John Legend",
-        youtube: "6VoT-KrseHA"
-    },
-
-    {
         title: "All Star",
         artist: "Smash Mouth",
-        youtube: "ABOYo7ioQJo"
+        youtube: "aBZalv78EcQ"
     },
 
     {
@@ -184,8 +616,8 @@ const songs = [
 
     {
         title: "ALL OUT OF LOVE",
-        artist: "O-Town",
-        youtube: "05e33y630oo"
+        artist: "AIR SUPPLY",
+        youtube: "ZpNbrYi1m1s"
     },
 
     {
@@ -209,7 +641,7 @@ const songs = [
     {
         title: "ALL I WANT",
         artist: "OLIVIA RODRIGO",
-        youtube: "DqqsTljY3PA"
+        youtube: "FTa598gy9hg"
     },
 
     {
@@ -221,7 +653,7 @@ const songs = [
     {
         title: "ALL BY MYSELF",
         artist: "Céline Dion",
-        youtube: "eiTOcxAmyLA"
+        youtube: "c_OZDIhvjJs"
     },
 
     {
@@ -233,7 +665,7 @@ const songs = [
     {
         title: "A THOUSAND YEARS",
         artist: "Christina Perri",
-        youtube: "85zr83teaug"
+        youtube: "UVea7f7tyKg"
     },
 
     {
