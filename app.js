@@ -1,12 +1,20 @@
 /* =========================================================
    KARAOKE ONLINE
    CONTROL 1 + PHONE CONTROL 2
+
+   IMPROVED:
+   - Automatic PeerJS reconnect
+   - Safari / iPhone background recovery
+   - Wi-Fi recovery
+   - Prevent duplicate connections
+   - Automatic state sync after reconnect
 ========================================================= */
 
 
 /* =========================================================
    SONG DATABASE
 ========================================================= */
+
 const songs = [
     {
         title: "BATANG BATA KA PA",
@@ -750,7 +758,9 @@ let endHandled = false;
 ========================================================= */
 
 const urlParams =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+        window.location.search
+    );
 
 const remoteRoom =
     urlParams.get("remote");
@@ -760,7 +770,7 @@ const isRemote =
 
 
 /* =========================================================
-   PEERJS
+   PEERJS STATE
 ========================================================= */
 
 let peer = null;
@@ -768,6 +778,25 @@ let peer = null;
 let hostConnection = null;
 
 let remoteConnections = [];
+
+let remoteReconnectTimer = null;
+
+let remoteReconnectAttempts = 0;
+
+let remoteConnecting = false;
+
+let peerStarting = false;
+
+let pageIsVisible = true;
+
+
+/* =========================================================
+   CONNECTION SETTINGS
+========================================================= */
+
+const RECONNECT_BASE_DELAY = 1000;
+
+const RECONNECT_MAX_DELAY = 10000;
 
 
 /* =========================================================
@@ -777,6 +806,10 @@ let remoteConnections = [];
 document.addEventListener(
     "DOMContentLoaded",
     function () {
+
+        pageIsVisible =
+            !document.hidden;
+
 
         if (isRemote) {
 
@@ -793,16 +826,144 @@ document.addEventListener(
 
 
 /* =========================================================
+   PAGE VISIBILITY
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function () {
+
+        pageIsVisible =
+            !document.hidden;
+
+
+        if (!isRemote) {
+            return;
+        }
+
+
+        if (!document.hidden) {
+
+            console.log(
+                "📱 Remote page visible - checking connection..."
+            );
+
+
+            reconnectRemoteImmediately();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SAFARI / IOS PAGESHOW
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        if (!isRemote) {
+            return;
+        }
+
+
+        console.log(
+            "📱 pageshow - checking remote connection..."
+        );
+
+
+        reconnectRemoteImmediately();
+
+    }
+);
+
+
+/* =========================================================
+   SAFARI / IOS PAGE FOCUS
+========================================================= */
+
+window.addEventListener(
+    "focus",
+    function () {
+
+        if (!isRemote) {
+            return;
+        }
+
+
+        reconnectRemoteImmediately();
+
+    }
+);
+
+
+/* =========================================================
+   NETWORK ONLINE
+========================================================= */
+
+window.addEventListener(
+    "online",
+    function () {
+
+        console.log(
+            "📶 Network online - reconnecting..."
+        );
+
+
+        if (isRemote) {
+
+            reconnectRemoteImmediately();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   NETWORK OFFLINE
+========================================================= */
+
+window.addEventListener(
+    "offline",
+    function () {
+
+        console.log(
+            "📴 Network offline"
+        );
+
+
+        if (isRemote) {
+
+            updateRemoteStatus(
+                "🔴 Offline"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
    HOST START
 ========================================================= */
 
 function startHost() {
 
     const hostApp =
-        document.getElementById("hostApp");
+        document.getElementById(
+            "hostApp"
+        );
+
 
     const remoteApp =
-        document.getElementById("remoteApp");
+        document.getElementById(
+            "remoteApp"
+        );
 
 
     if (hostApp) {
@@ -835,10 +996,15 @@ function startHost() {
 function startRemote() {
 
     const hostApp =
-        document.getElementById("hostApp");
+        document.getElementById(
+            "hostApp"
+        );
+
 
     const remoteApp =
-        document.getElementById("remoteApp");
+        document.getElementById(
+            "remoteApp"
+        );
 
 
     if (hostApp) {
@@ -857,7 +1023,36 @@ function startRemote() {
     }
 
 
+    updateRemoteStatus(
+        "🟡 Connecting..."
+    );
+
+
     startRemotePeer();
+
+}
+
+
+/* =========================================================
+   UPDATE REMOTE STATUS
+========================================================= */
+
+function updateRemoteStatus(
+    text
+) {
+
+    const status =
+        document.getElementById(
+            "remoteConnectionStatus"
+        );
+
+
+    if (status) {
+
+        status.textContent =
+            text;
+
+    }
 
 }
 
@@ -868,16 +1063,50 @@ function startRemote() {
 
 function startHostPeer() {
 
-    peer = new Peer();
+    if (peer) {
+
+        try {
+
+            if (
+                !peer.destroyed
+            ) {
+
+                return;
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Host peer check error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    peer =
+        new Peer();
 
 
     peer.on(
         "open",
         function (id) {
 
+            console.log(
+                "🟢 Host Peer opened:",
+                id
+            );
+
+
             const code =
                 id.substring(
-                    Math.max(0, id.length - 8)
+                    Math.max(
+                        0,
+                        id.length - 8
+                    )
                 );
 
 
@@ -899,7 +1128,9 @@ function startHostPeer() {
                 window.location.origin +
                 window.location.pathname +
                 "?remote=" +
-                encodeURIComponent(id);
+                encodeURIComponent(
+                    id
+                );
 
 
             const remoteLink =
@@ -916,7 +1147,9 @@ function startHostPeer() {
             }
 
 
-            generateQRCode(remoteUrl);
+            generateQRCode(
+                remoteUrl
+            );
 
 
             const connectionStatus =
@@ -936,9 +1169,33 @@ function startHostPeer() {
     );
 
 
+    /* =====================================================
+       HOST RECEIVES PHONE
+    ===================================================== */
+
     peer.on(
         "connection",
         function (connection) {
+
+            console.log(
+                "📱 Incoming phone connection"
+            );
+
+
+            /*
+               Avoid duplicate connection object.
+            */
+
+            if (
+                remoteConnections.includes(
+                    connection
+                )
+            ) {
+
+                return;
+
+            }
+
 
             remoteConnections.push(
                 connection
@@ -954,7 +1211,7 @@ function startHostPeer() {
             if (phoneStatus) {
 
                 phoneStatus.textContent =
-                    "📱 Phone Connected";
+                    "📱 Phone Connecting...";
 
             }
 
@@ -962,6 +1219,24 @@ function startHostPeer() {
             connection.on(
                 "open",
                 function () {
+
+                    console.log(
+                        "🟢 Phone connected to host"
+                    );
+
+
+                    if (phoneStatus) {
+
+                        phoneStatus.textContent =
+                            "📱 Phone Connected";
+
+                    }
+
+
+                    /*
+                       IMPORTANT:
+                       Send latest state immediately.
+                    */
 
                     sendState(
                         connection
@@ -987,24 +1262,27 @@ function startHostPeer() {
                 "close",
                 function () {
 
-                    remoteConnections =
-                        remoteConnections.filter(
-                            c => c !== connection
-                        );
+                    console.log(
+                        "📴 Phone connection closed"
+                    );
 
 
-                    if (
-                        remoteConnections.length === 0
-                    ) {
+                    removeHostConnection(
+                        connection
+                    );
 
-                        if (phoneStatus) {
+                }
+            );
 
-                            phoneStatus.textContent =
-                                "📱 No phone connected";
 
-                        }
+            connection.on(
+                "error",
+                function (error) {
 
-                    }
+                    console.error(
+                        "Phone connection error:",
+                        error
+                    );
 
                 }
             );
@@ -1012,6 +1290,10 @@ function startHostPeer() {
         }
     );
 
+
+    /* =====================================================
+       HOST PEER ERROR
+    ===================================================== */
 
     peer.on(
         "error",
@@ -1039,105 +1321,244 @@ function startHostPeer() {
         }
     );
 
-}
 
-
-/* =========================================================
-   REMOTE PEER
-========================================================= */
-
-function startRemotePeer() {
-
-    peer = new Peer();
-
+    /* =====================================================
+       HOST PEER DISCONNECTED
+    ===================================================== */
 
     peer.on(
-        "open",
+        "disconnected",
         function () {
 
-            hostConnection =
-                peer.connect(
-                    remoteRoom
+            console.log(
+                "🔴 Host Peer disconnected"
+            );
+
+
+            const connectionStatus =
+                document.getElementById(
+                    "connectionStatus"
                 );
 
 
-            hostConnection.on(
-                "open",
+            if (connectionStatus) {
+
+                connectionStatus.textContent =
+                    "🟡 Reconnecting...";
+
+            }
+
+
+            /*
+               PeerJS can reconnect the same Peer.
+            */
+
+            setTimeout(
                 function () {
 
-                    const status =
-                        document.getElementById(
-                            "remoteConnectionStatus"
-                        );
+                    if (
+                        peer &&
+                        !peer.destroyed &&
+                        !peer.open
+                    ) {
 
+                        try {
 
-                    if (status) {
+                            peer.reconnect();
 
-                        status.textContent =
-                            "🟢 Connected";
+                        } catch (error) {
+
+                            console.error(
+                                "Host reconnect error:",
+                                error
+                            );
+
+                        }
 
                     }
 
-                }
-            );
-
-
-            hostConnection.on(
-                "data",
-                function (data) {
-
-                    handleHostState(
-                        data
-                    );
-
-                }
-            );
-
-
-            hostConnection.on(
-                "close",
-                function () {
-
-                    const status =
-                        document.getElementById(
-                            "remoteConnectionStatus"
-                        );
-
-
-                    if (status) {
-
-                        status.textContent =
-                            "🔴 Disconnected";
-
-                    }
-
-                }
-            );
-
-
-            hostConnection.on(
-                "error",
-                function () {
-
-                    const status =
-                        document.getElementById(
-                            "remoteConnectionStatus"
-                        );
-
-
-                    if (status) {
-
-                        status.textContent =
-                            "🔴 Connection Error";
-
-                    }
-
-                }
+                },
+                1000
             );
 
         }
     );
 
+
+    /* =====================================================
+       HOST PEER CLOSED
+    ===================================================== */
+
+    peer.on(
+        "close",
+        function () {
+
+            console.log(
+                "🔴 Host Peer closed"
+            );
+
+
+            peer = null;
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   REMOVE HOST CONNECTION
+========================================================= */
+
+function removeHostConnection(
+    connection
+) {
+
+    remoteConnections =
+        remoteConnections.filter(
+            function (item) {
+
+                return item !== connection;
+
+            }
+        );
+
+
+    const phoneStatus =
+        document.getElementById(
+            "phoneStatus"
+        );
+
+
+    if (
+        remoteConnections.length === 0
+    ) {
+
+        if (phoneStatus) {
+
+            phoneStatus.textContent =
+                "📱 No phone connected";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   REMOTE PEER START
+========================================================= */
+
+function startRemotePeer() {
+
+    if (
+        !remoteRoom
+    ) {
+
+        updateRemoteStatus(
+            "🔴 No room"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Prevent duplicate Peer creation.
+    */
+
+    if (
+        peerStarting
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        peer &&
+        !peer.destroyed
+    ) {
+
+        /*
+           Peer exists.
+           Just make sure connection exists.
+        */
+
+        if (
+            peer.open
+        ) {
+
+            connectToHost();
+
+        }
+
+        else {
+
+            updateRemoteStatus(
+                "🟡 Connecting..."
+            );
+
+        }
+
+
+        return;
+
+    }
+
+
+    peerStarting =
+        true;
+
+
+    updateRemoteStatus(
+        "🟡 Connecting..."
+    );
+
+
+    console.log(
+        "📱 Creating remote Peer..."
+    );
+
+
+    peer =
+        new Peer();
+
+
+    /* =====================================================
+       REMOTE PEER OPEN
+    ===================================================== */
+
+    peer.on(
+        "open",
+        function (id) {
+
+            console.log(
+                "🟢 Remote Peer opened:",
+                id
+            );
+
+
+            peerStarting =
+                false;
+
+
+            remoteReconnectAttempts =
+                0;
+
+
+            connectToHost();
+
+        }
+    );
+
+
+    /* =====================================================
+       REMOTE PEER ERROR
+    ===================================================== */
 
     peer.on(
         "error",
@@ -1149,18 +1570,127 @@ function startRemotePeer() {
             );
 
 
-            const status =
-                document.getElementById(
-                    "remoteConnectionStatus"
+            peerStarting =
+                false;
+
+
+            /*
+               If peer itself is still alive,
+               don't immediately destroy it.
+            */
+
+            if (
+                error &&
+                error.type ===
+                "peer-unavailable"
+            ) {
+
+                updateRemoteStatus(
+                    "🟡 Host unavailable - retrying..."
                 );
 
+                scheduleRemoteReconnect();
 
-            if (status) {
-
-                status.textContent =
-                    "🔴 Connection Failed";
+                return;
 
             }
+
+
+            updateRemoteStatus(
+                "🟡 Connection retry..."
+            );
+
+
+            scheduleRemoteReconnect();
+
+        }
+    );
+
+
+    /* =====================================================
+       REMOTE PEER DISCONNECTED
+    ===================================================== */
+
+    peer.on(
+        "disconnected",
+        function () {
+
+            console.log(
+                "🔴 Remote Peer disconnected"
+            );
+
+
+            updateRemoteStatus(
+                "🟡 Reconnecting..."
+            );
+
+
+            /*
+               Try PeerJS reconnect first.
+            */
+
+            try {
+
+                if (
+                    peer &&
+                    !peer.destroyed
+                ) {
+
+                    peer.reconnect();
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Peer reconnect error:",
+                    error
+                );
+
+            }
+
+
+            /*
+               Also check the host connection.
+            */
+
+            scheduleRemoteReconnect();
+
+        }
+    );
+
+
+    /* =====================================================
+       REMOTE PEER CLOSED
+    ===================================================== */
+
+    peer.on(
+        "close",
+        function () {
+
+            console.log(
+                "🔴 Remote Peer closed"
+            );
+
+
+            peer =
+                null;
+
+
+            hostConnection =
+                null;
+
+
+            peerStarting =
+                false;
+
+
+            updateRemoteStatus(
+                "🟡 Reconnecting..."
+            );
+
+
+            scheduleRemoteReconnect();
 
         }
     );
@@ -1169,10 +1699,559 @@ function startRemotePeer() {
 
 
 /* =========================================================
+   CONNECT TO HOST
+========================================================= */
+
+function connectToHost() {
+
+    if (
+        !isRemote
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        !peer ||
+        peer.destroyed
+    ) {
+
+        startRemotePeer();
+
+        return;
+
+    }
+
+
+    if (
+        !peer.open
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+       Already connected.
+    */
+
+    if (
+        hostConnection &&
+        hostConnection.open
+    ) {
+
+        updateRemoteStatus(
+            "🟢 Connected"
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+       Prevent duplicate simultaneous attempts.
+    */
+
+    if (
+        remoteConnecting
+    ) {
+
+        return;
+
+    }
+
+
+    remoteConnecting =
+        true;
+
+
+    updateRemoteStatus(
+        "🟡 Connecting..."
+    );
+
+
+    console.log(
+        "📱 Connecting to host..."
+    );
+
+
+    let connection;
+
+
+    try {
+
+        connection =
+            peer.connect(
+                remoteRoom,
+                {
+                    reliable: true
+                }
+            );
+
+    } catch (error) {
+
+        console.error(
+            "peer.connect error:",
+            error
+        );
+
+
+        remoteConnecting =
+            false;
+
+
+        scheduleRemoteReconnect();
+
+        return;
+
+    }
+
+
+    hostConnection =
+        connection;
+
+
+    /* =====================================================
+       CONNECTION OPEN
+    ===================================================== */
+
+    connection.on(
+        "open",
+        function () {
+
+            console.log(
+                "🟢 Remote connected to host"
+            );
+
+
+            remoteConnecting =
+                false;
+
+
+            remoteReconnectAttempts =
+                0;
+
+
+            updateRemoteStatus(
+                "🟢 Connected"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       RECEIVE HOST STATE
+    ===================================================== */
+
+    connection.on(
+        "data",
+        function (data) {
+
+            handleHostState(
+                data
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CONNECTION CLOSE
+    ===================================================== */
+
+    connection.on(
+        "close",
+        function () {
+
+            console.log(
+                "🔴 Host connection closed"
+            );
+
+
+            remoteConnecting =
+                false;
+
+
+            /*
+               Only clear if this is
+               still the active connection.
+            */
+
+            if (
+                hostConnection ===
+                connection
+            ) {
+
+                hostConnection =
+                    null;
+
+            }
+
+
+            updateRemoteStatus(
+                "🟡 Reconnecting..."
+            );
+
+
+            scheduleRemoteReconnect();
+
+        }
+    );
+
+
+    /* =====================================================
+       CONNECTION ERROR
+    ===================================================== */
+
+    connection.on(
+        "error",
+        function (error) {
+
+            console.error(
+                "Host connection error:",
+                error
+            );
+
+
+            remoteConnecting =
+                false;
+
+
+            updateRemoteStatus(
+                "🟡 Reconnecting..."
+            );
+
+
+            scheduleRemoteReconnect();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SCHEDULE REMOTE RECONNECT
+========================================================= */
+
+function scheduleRemoteReconnect() {
+
+    if (
+        !isRemote
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+       Don't create multiple timers.
+    */
+
+    if (
+        remoteReconnectTimer
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+       Exponential backoff.
+
+       1 sec
+       2 sec
+       4 sec
+       8 sec
+       10 sec max
+    */
+
+    const delay =
+        Math.min(
+            RECONNECT_BASE_DELAY *
+            Math.pow(
+                2,
+                remoteReconnectAttempts
+            ),
+            RECONNECT_MAX_DELAY
+        );
+
+
+    remoteReconnectAttempts =
+        Math.min(
+            remoteReconnectAttempts + 1,
+            10
+        );
+
+
+    console.log(
+        "🔄 Remote reconnect in:",
+        delay,
+        "ms"
+    );
+
+
+    remoteReconnectTimer =
+        setTimeout(
+            function () {
+
+                remoteReconnectTimer =
+                    null;
+
+
+                reconnectRemoteNow();
+
+            },
+            delay
+        );
+
+}
+
+
+/* =========================================================
+   IMMEDIATE REMOTE RECONNECT
+========================================================= */
+
+function reconnectRemoteImmediately() {
+
+    if (
+        !isRemote
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+       Clear pending reconnect timer.
+    */
+
+    if (
+        remoteReconnectTimer
+    ) {
+
+        clearTimeout(
+            remoteReconnectTimer
+        );
+
+
+        remoteReconnectTimer =
+            null;
+
+    }
+
+
+    remoteReconnectAttempts =
+        0;
+
+
+    reconnectRemoteNow();
+
+}
+
+
+/* =========================================================
+   ACTUAL REMOTE RECONNECT
+========================================================= */
+
+function reconnectRemoteNow() {
+
+    if (
+        !isRemote
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+       If browser is offline,
+       wait for "online".
+    */
+
+    if (
+        navigator.onLine === false
+    ) {
+
+        updateRemoteStatus(
+            "🔴 Offline"
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+       Existing healthy connection.
+    */
+
+    if (
+        hostConnection &&
+        hostConnection.open
+    ) {
+
+        updateRemoteStatus(
+            "🟢 Connected"
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+       Peer doesn't exist.
+    */
+
+    if (
+        !peer ||
+        peer.destroyed
+    ) {
+
+        peer =
+            null;
+
+
+        hostConnection =
+            null;
+
+
+        startRemotePeer();
+
+        return;
+
+    }
+
+
+    /*
+       Peer exists but is disconnected.
+    */
+
+    if (
+        !peer.open
+    ) {
+
+        updateRemoteStatus(
+            "🟡 Reconnecting..."
+        );
+
+
+        try {
+
+            if (
+                typeof peer.reconnect ===
+                "function"
+            ) {
+
+                peer.reconnect();
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "peer.reconnect error:",
+                error
+            );
+
+
+            rebuildRemotePeer();
+
+        }
+
+
+        return;
+
+    }
+
+
+    /*
+       Peer is open,
+       so create host connection.
+    */
+
+    connectToHost();
+
+}
+
+
+/* =========================================================
+   REBUILD REMOTE PEER
+========================================================= */
+
+function rebuildRemotePeer() {
+
+    console.log(
+        "♻️ Rebuilding remote Peer..."
+    );
+
+
+    remoteConnecting =
+        false;
+
+
+    hostConnection =
+        null;
+
+
+    if (
+        peer
+    ) {
+
+        try {
+
+            peer.destroy();
+
+        } catch (error) {
+
+            console.error(
+                "Peer destroy error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    peer =
+        null;
+
+
+    peerStarting =
+        false;
+
+
+    updateRemoteStatus(
+        "🟡 Reconnecting..."
+    );
+
+
+    scheduleRemoteReconnect();
+
+}
+
+
+/* =========================================================
    GENERATE QR
 ========================================================= */
 
-function generateQRCode(url) {
+function generateQRCode(
+    url
+) {
 
     const qr =
         document.getElementById(
@@ -1185,11 +2264,13 @@ function generateQRCode(url) {
     }
 
 
-    qr.innerHTML = "";
+    qr.innerHTML =
+        "";
 
 
     if (
-        typeof QRCode !== "undefined"
+        typeof QRCode !==
+        "undefined"
     ) {
 
         new QRCode(
@@ -1229,7 +2310,8 @@ function copyRemoteLink() {
 
     if (
         !link ||
-        link === "Preparing remote..."
+        link ===
+        "Preparing remote..."
     ) {
 
         return;
@@ -1238,7 +2320,9 @@ function copyRemoteLink() {
 
 
     navigator.clipboard
-        .writeText(link)
+        .writeText(
+            link
+        )
         .then(
             function () {
 
@@ -1256,7 +2340,9 @@ function copyRemoteLink() {
    SEND STATE TO ONE REMOTE
 ========================================================= */
 
-function sendState(connection) {
+function sendState(
+    connection
+) {
 
     if (
         !connection ||
@@ -1268,20 +2354,31 @@ function sendState(connection) {
     }
 
 
-    connection.send({
+    try {
 
-        type: "state",
+        connection.send({
 
-        currentSong:
-            currentSong,
+            type: "state",
 
-        reservedSongs:
-            [...reservedSongs],
+            currentSong:
+                currentSong,
 
-        isPlaying:
-            isPlaying
+            reservedSongs:
+                [...reservedSongs],
 
-    });
+            isPlaying:
+                isPlaying
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "sendState error:",
+            error
+        );
+
+    }
 
 }
 
@@ -1298,7 +2395,9 @@ function broadcastState() {
 
 
     remoteConnections.forEach(
-        function (connection) {
+        function (
+            connection
+        ) {
 
             sendState(
                 connection
@@ -1314,14 +2413,18 @@ function broadcastState() {
    HANDLE REMOTE COMMAND
 ========================================================= */
 
-function handleRemoteCommand(data) {
+function handleRemoteCommand(
+    data
+) {
 
     if (!data) {
         return;
     }
 
 
-    switch (data.type) {
+    switch (
+        data.type
+    ) {
 
         case "reserve":
 
@@ -1379,11 +2482,14 @@ function handleRemoteCommand(data) {
    HANDLE HOST STATE
 ========================================================= */
 
-function handleHostState(data) {
+function handleHostState(
+    data
+) {
 
     if (
         !data ||
-        data.type !== "state"
+        data.type !==
+        "state"
     ) {
 
         return;
@@ -1444,6 +2550,22 @@ function handleHostState(data) {
 
     renderRemoteQueue();
 
+
+    /*
+       Keep status green after receiving state.
+    */
+
+    if (
+        hostConnection &&
+        hostConnection.open
+    ) {
+
+        updateRemoteStatus(
+            "🟢 Connected"
+        );
+
+    }
+
 }
 
 
@@ -1451,23 +2573,47 @@ function handleHostState(data) {
    REMOTE COMMAND
 ========================================================= */
 
-function remoteCommand(command) {
+function remoteCommand(
+    command
+) {
 
     if (
         !hostConnection ||
         !hostConnection.open
     ) {
 
+        /*
+           Don't silently fail.
+           Try reconnecting.
+        */
+
+        reconnectRemoteImmediately();
+
         return;
 
     }
 
 
-    hostConnection.send({
+    try {
 
-        type: command
+        hostConnection.send({
 
-    });
+            type:
+                command
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Remote command error:",
+            error
+        );
+
+
+        scheduleRemoteReconnect();
+
+    }
 
 }
 
@@ -1476,25 +2622,45 @@ function remoteCommand(command) {
    REMOTE RESERVE
 ========================================================= */
 
-function remoteReserve(index) {
+function remoteReserve(
+    index
+) {
 
     if (
         !hostConnection ||
         !hostConnection.open
     ) {
 
+        reconnectRemoteImmediately();
+
         return;
 
     }
 
 
-    hostConnection.send({
+    try {
 
-        type: "reserve",
+        hostConnection.send({
 
-        index: index
+            type:
+                "reserve",
 
-    });
+            index:
+                index
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Remote reserve error:",
+            error
+        );
+
+
+        scheduleRemoteReconnect();
+
+    }
 
 }
 
@@ -1503,25 +2669,45 @@ function remoteReserve(index) {
    REMOTE REMOVE
 ========================================================= */
 
-function remoteRemoveReserve(index) {
+function remoteRemoveReserve(
+    index
+) {
 
     if (
         !hostConnection ||
         !hostConnection.open
     ) {
 
+        reconnectRemoteImmediately();
+
         return;
 
     }
 
 
-    hostConnection.send({
+    try {
 
-        type: "removeReserve",
+        hostConnection.send({
 
-        index: index
+            type:
+                "removeReserve",
 
-    });
+            index:
+                index
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Remote remove reserve error:",
+            error
+        );
+
+
+        scheduleRemoteReconnect();
+
+    }
 
 }
 
@@ -1530,7 +2716,9 @@ function remoteRemoveReserve(index) {
    LOAD SONG
 ========================================================= */
 
-function loadSong(index) {
+function loadSong(
+    index
+) {
 
     if (!songs.length) {
         return;
@@ -1551,7 +2739,8 @@ function loadSong(index) {
         index >= songs.length
     ) {
 
-        index = 0;
+        index =
+            0;
 
     }
 
@@ -1624,7 +2813,9 @@ function loadSong(index) {
         !isPlayerReady
     ) {
 
-        isPlaying = false;
+        isPlaying =
+            false;
+
 
         broadcastState();
 
@@ -1649,7 +2840,9 @@ function loadSong(index) {
     }
 
 
-    isPlaying = false;
+    isPlaying =
+        false;
+
 
     isChangingSong =
         false;
@@ -1664,7 +2857,9 @@ function loadSong(index) {
    YOUTUBE PLAYER READY
 ========================================================= */
 
-function onYouTubePlayerReady(event) {
+function onYouTubePlayerReady(
+    event
+) {
 
     youtubePlayer =
         event.target;
@@ -1679,7 +2874,8 @@ function onYouTubePlayerReady(event) {
 
 
     if (
-        pendingSongIndex !== null
+        pendingSongIndex !==
+        null
     ) {
 
         index =
@@ -1773,7 +2969,9 @@ function onYouTubePlayerReady(event) {
    YOUTUBE STATE
 ========================================================= */
 
-function onYouTubePlayerStateChange(event) {
+function onYouTubePlayerStateChange(
+    event
+) {
 
     if (
         !window.YT ||
@@ -1830,12 +3028,6 @@ function onYouTubePlayerStateChange(event) {
         YT.PlayerState.ENDED
     ) {
 
-        /*
-           IMPORTANT:
-           Prevent duplicate nextSong()
-           calls from YouTube.
-        */
-
         if (
             endHandled
         ) {
@@ -1855,12 +3047,6 @@ function onYouTubePlayerStateChange(event) {
 
         broadcastState();
 
-
-        /*
-           Small delay so YouTube can
-           completely finish the old video
-           before loading the next one.
-        */
 
         setTimeout(
             function () {
@@ -1898,8 +3084,10 @@ function createYouTubePlayer() {
 
 
     if (
-        typeof YT === "undefined" ||
-        typeof YT.Player === "undefined"
+        typeof YT ===
+            "undefined" ||
+        typeof YT.Player ===
+            "undefined"
     ) {
 
         console.error(
@@ -1947,11 +3135,14 @@ function createYouTubePlayer() {
 
                 playerVars: {
 
-                    autoplay: 0,
+                    autoplay:
+                        0,
 
-                    rel: 0,
+                    rel:
+                        0,
 
-                    playsinline: 1
+                    playsinline:
+                        1
 
                 },
 
@@ -1982,10 +3173,6 @@ function nextSong() {
     }
 
 
-    /*
-       Stop duplicate next calls.
-    */
-
     if (
         isChangingSong
     ) {
@@ -2000,12 +3187,12 @@ function nextSong() {
 
 
     /*
-       PRIORITY:
        RESERVED SONG FIRST
     */
 
     if (
-        reservedSongs.length > 0
+        reservedSongs.length >
+        0
     ) {
 
         const nextIndex =
@@ -2029,7 +3216,6 @@ function nextSong() {
 
     /*
        NO RESERVED SONG
-       → NEXT SONG IN DATABASE
     */
 
     let nextIndex =
@@ -2037,7 +3223,8 @@ function nextSong() {
 
 
     if (
-        nextIndex >= songs.length
+        nextIndex >=
+        songs.length
     ) {
 
         nextIndex =
@@ -2127,7 +3314,9 @@ function togglePlay() {
    RESERVE
 ========================================================= */
 
-function reserveSong(index) {
+function reserveSong(
+    index
+) {
 
     if (
         index < 0 ||
@@ -2149,7 +3338,9 @@ function reserveSong(index) {
 
 
     if (
-        reservedSongs.includes(index)
+        reservedSongs.includes(
+            index
+        )
     ) {
 
         return;
@@ -2173,12 +3364,22 @@ function reserveSong(index) {
    REMOVE RESERVE
 ========================================================= */
 
-function removeReserve(index) {
+function removeReserve(
+    index
+) {
 
     reservedSongs =
         reservedSongs.filter(
-            songIndex =>
-                songIndex !== index
+            function (
+                songIndex
+            ) {
+
+                return (
+                    songIndex !==
+                    index
+                );
+
+            }
         );
 
 
@@ -2238,11 +3439,15 @@ function renderSongs(
     }
 
 
-    list.innerHTML = "";
+    list.innerHTML =
+        "";
 
 
     songs.forEach(
-        function (song, index) {
+        function (
+            song,
+            index
+        ) {
 
             if (
                 !song ||
@@ -2268,8 +3473,12 @@ function renderSongs(
 
 
             if (
-                !title.includes(search) &&
-                !artist.includes(search)
+                !title.includes(
+                    search
+                ) &&
+                !artist.includes(
+                    search
+                )
             ) {
 
                 return;
@@ -2290,7 +3499,8 @@ function renderSongs(
             /* CURRENT */
 
             if (
-                index === currentSong
+                index ===
+                currentSong
             ) {
 
                 button.classList.add(
@@ -2317,7 +3527,6 @@ function renderSongs(
                         );
 
                     };
-
 
             }
 
@@ -2360,7 +3569,6 @@ function renderSongs(
                         );
 
                     };
-
 
             }
 
@@ -2451,11 +3659,15 @@ function renderRemoteSongs(
     }
 
 
-    list.innerHTML = "";
+    list.innerHTML =
+        "";
 
 
     songs.forEach(
-        function (song, index) {
+        function (
+            song,
+            index
+        ) {
 
             if (
                 !song ||
@@ -2481,8 +3693,12 @@ function renderRemoteSongs(
 
 
             if (
-                !title.includes(search) &&
-                !artist.includes(search)
+                !title.includes(
+                    search
+                ) &&
+                !artist.includes(
+                    search
+                )
             ) {
 
                 return;
@@ -2501,7 +3717,8 @@ function renderRemoteSongs(
 
 
             if (
-                index === currentSong
+                index ===
+                currentSong
             ) {
 
                 button.classList.add(
@@ -2614,11 +3831,13 @@ function renderRemoteQueue() {
     }
 
 
-    queue.innerHTML = "";
+    queue.innerHTML =
+        "";
 
 
     if (
-        reservedSongs.length === 0
+        reservedSongs.length ===
+        0
     ) {
 
         queue.textContent =
@@ -2630,7 +3849,10 @@ function renderRemoteQueue() {
 
 
     reservedSongs.forEach(
-        function (index, position) {
+        function (
+            index,
+            position
+        ) {
 
             const song =
                 songs[index];
