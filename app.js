@@ -17,6 +17,396 @@
 
 const songs = [
     {
+        title: "DUKHA",
+        artist: "AEGIS",
+        youtube: "EKD8fd5eMrk"
+    },
+
+    {
+        title: "DREAM GIEL",
+        artist: "KOLOHE KAI",
+        youtube: "EIe9YEOwpvA"
+    },
+
+    {
+        title: "DRAG ME DOWN",
+        artist: "ONE DIRECTION",
+        youtube: "udidLdWZ_64"
+    },
+
+    {
+        title: "DOTA O AKO",
+        artist: "AIKEE FT SABRINA",
+        youtube: "k6v8zYeaZD4"
+    },
+
+    {
+        title: "DONT MATTER (TAGALOG)",
+        artist: "TAGALOG",
+        youtube: "O2Dr-s_EbyA"
+    },
+
+    {
+        title: "DONT MATTER",
+        artist: "AKON",
+        youtube: "IXV_jiks3Mw"
+    },
+
+    {
+        title: "DONT LET ME DOWN",
+        artist: "THE CHAINSMOKERS",
+        youtube: "Sb3dbE_vqhc"
+    },
+
+    {
+        title: "DONT LET ME DOWN",
+        artist: "THE BEATLES",
+        youtube: "cbxuN_v8D3Y"
+    },
+
+    {
+        title: "DONT STOP BELIEVIN",
+        artist: "JOURNEY",
+        youtube: "VzuzYFCPJgc"
+    },
+
+    {
+        title: "DROWNING",
+        artist: "BACKSTREET BOYS",
+        youtube: "3d_IlZQsXn4"
+    },
+
+    {
+        title: "DONT KNOW WHAT TO SAY",
+        artist: "RIC SEGRETO",
+        youtube: "nxtzuzmwb7M"
+    },
+
+    {
+        title: "DOMINO",
+        artist: "JESSIE J",
+        youtube: "14WsRIy4XM8"
+    },
+
+    {
+        title: "DO I HAVE TO CRY FOR YOU",
+        artist: "NICK CARTER",
+        youtube: "_vByAXKI4Fg"
+    },
+
+    {
+        title: "DIWATA",
+        artist: "ABRA FT CHITO MIRANDA",
+        youtube: "yvnRmAJh5Po"
+    },
+
+    {
+        title: "DIVE",
+        artist: "ED SHEERAN",
+        youtube: "rtKW1dNKRog"
+    },
+
+    {
+        title: "DITO SA ISANG TABI",
+        artist: "JESSA ZARAGOZA",
+        youtube: "aMDAzXAr0cA"
+    },
+
+    {
+        title: "DITO KA LANG",
+        artist: "MOIRA DELA TORRE",
+        youtube: "nJEdf5DBAOY"
+    },
+
+    {
+        title: "DI KO KAYA",
+        artist: "ERIC SANTOS",
+        youtube: "B5fpuihgHp4"
+    },
+
+    {
+        title: "DI LANG IKAW",
+        artist: "JURIS",
+        youtube: "_mFi2XaxmGQ"
+    },
+
+    {
+        title: "DI KO KAYANG TANGGAPIN",
+        artist: "APRIL BOY REGINO",
+        youtube: "4P87RbwbAG0"
+    },
+
+    {
+        title: "DI BALE NALANG",
+        artist: "JERICHO ROSALES",
+        youtube: "v3I717GTrRs"
+    },
+
+    {
+        title: "DI AKO F*CKBOY",
+        artist: "JROA",
+        youtube: "PbPzyFR3-0s"
+    },
+
+    {
+        title: "DESTINY",
+        artist: "JIM BRICKMAN",
+        youtube: "LY6P-QmNibI"
+    },
+
+    {
+        title: "DESPACITO",
+        artist: "LUIS FONSI",
+        youtube: "Ebk8JE0TK28"
+    },
+
+    {
+        title: "DEMONS",
+        artist: "IMAGINE DRAGONS",
+        youtube: "1-bk1KmwsqE"
+    },
+
+    {
+        title: "DAYANG DAYANG",
+        artist: "BUKROS SINGERS",
+        youtube: "0thFTwg76ZU"
+    },
+
+    {
+        title: "DATI PA",
+        artist: "AIZA SEGUERRA",
+        youtube: "0BkfhxbQt4I"
+    },
+
+    {
+        title: "DATING TAYO",
+        artist: "TJ MONTERDE",
+        youtube: "DcEI2aEokks"
+    },
+
+    {
+        title: "DATI",
+        artist: "SAM CONCEPCION",
+        youtube: "8y5AMt7TZT8"
+    },
+
+    {
+        title: "DANCING ONY MY OWN",
+        artist: "CALUMM SCOTT",
+        youtube: "j7picn_454E"
+    },
+
+    {
+        title: "DANCING QUEEN",
+        artist: "ABBA",
+        youtube: "qjMSGIfB1j8"
+    },
+
+    {
+        title: "DANCE WITH MY FATHER",
+        artist: "LUTHER VANDROSS",
+        youtube: "-l24u_d_OJk"
+    },
+
+    {
+        title: "DAHIL TANGING IKAW",
+        artist: "JAYA",
+        youtube: "nK9i8HC_1Sc"
+    },
+
+    {
+        title: "DAHIL SAYO",
+        artist: "INIGO PASCUAL",
+        youtube: "6tV-LQqgjR0"
+    },
+
+    {
+        title: "DAHIL MAHAL KITA",
+        artist: "BOYFRIENDS",
+        youtube: "krDW47ggmaM"
+    },
+
+    {
+        title: "DAHIL MAHAL NA MAHAL KITA",
+        artist: "ROSELLE NAVA",
+        youtube: "ezOYRO8jI-Y"
+    },
+
+    {
+        title: "DAHIL IKAW",
+        artist: "TRUE FAITH",
+        youtube: "jiZnJYJ0pAM"
+    },
+
+    {
+        title: "DAHAN",
+        artist: "DECEMBER AVENUE",
+        youtube: "D6l5o_XjfmM"
+    },
+
+    {
+        title: "DAHAN DAHAN",
+        artist: "MAJA SALVADOR",
+        youtube: "S6JS5GFC0D4"
+    },
+
+    {
+        title: "DADALHIN",
+        artist: "REGINE VELASQUEZ",
+        youtube: "BohBUy9a6c0"
+    },
+
+    {
+        title: "CRAZY FOR YOU",
+        artist: "SPONG COLA",
+        youtube: "iufUQWidHM0"
+    },
+
+    {
+        title: "COUNTING STARS",
+        artist: "ONE REPUBLIC",
+        youtube: "PBn0A4kD71o"
+    },
+
+    {
+        title: "COUNT ON YOU",
+        artist: "TOMMY SHAW",
+        youtube: "XGB8gmhwWzU"
+    },
+
+    {
+        title: "COUNT ON ME",
+        artist: "BRUNO MARS",
+        youtube: "DC3LY7K7WOI"
+    },
+
+    {
+        title: "ALWAYS",
+        artist: "MARCO SISON",
+        youtube: "9LEeveU5BBo"
+    },
+
+    {
+        title: "COME ON IN OUT OF THE RAIN",
+        artist: "SHERYN REGIS",
+        youtube: "Lm_lhEoH76c"
+    },
+
+    {
+        title: "COOL KA LANG",
+        artist: "PRETTIER THAN PINK",
+        youtube: "NPioeQYlGeY"
+    },
+
+    {
+        title: "COOL DOWN",
+        artist: "KOLOHE KAI",
+        youtube: "TrMwx641o-c"
+    },
+
+    {
+        title: "COLLIDE",
+        artist: "HOWIE DAY",
+        youtube: "GLcJfDaIBSA"
+    },
+
+    {
+        title: "COME WHAT MAY",
+        artist: "AIR SUPPLY",
+        youtube: "y5LtVfddlCQ"
+    },
+
+    {
+        title: "CLOSER YOU AND I",
+        artist: "GINO PADILLA",
+        youtube: "pvgScUhloHM"
+    },
+
+    {
+        title: "CLOSE TO YOU",
+        artist: "THE CARPENTERS",
+        youtube: "kWTCtLNLAVU"
+    },
+
+    {
+        title: "CHRISTMAS IN OUR HEARTS",
+        artist: "JOSE MARIE CHAN",
+        youtube: "In2oG-kAyiw"
+    },
+
+    {
+        title: "CHINITO",
+        artist: "YENG CONSTANTINO",
+        youtube: "tqaHBaVG6XU"
+    },
+
+    {
+        title: "CHASING PAVEMENTS",
+        artist: "ADELE",
+        youtube: "igwAJdMbFAQ"
+    },
+
+    {
+        title: "CHANGES IN MY LIFE",
+        artist: "MARK SHERMAN",
+        youtube: "0pPTVakg5Hs"
+    },
+
+    {
+        title: "CANT TAKE MY EYES OFF YOU",
+        artist: "MORTEN HARKET",
+        youtube: "rMH45OMIjBE"
+    },
+
+    {
+        title: "CHAMPAGNE SUPERNOVA",
+        artist: "OASIS",
+        youtube: "U_ojfis9lYw"
+    },
+
+    {
+        title: "CAN YOU FEEL THE LOVE TONIGHT",
+        artist: "ELTON JOHN",
+        youtube: "8SdNqJ0M6kE"
+    },
+
+    {
+        title: "CREEP",
+        artist: "RADIOHEAD",
+        youtube: "8mK_remhVlM"
+    },
+
+    {
+        title: "CALIFORNIA KING BED",
+        artist: "RIHANNA",
+        youtube: "8NXGzWPGOwk"
+    },
+
+    {
+        title: "BLACK MAGIC",
+        artist: "LITTLE MIX",
+        youtube: "uU1C2oJRWEE"
+    },
+
+    {
+        title: "ALL I EVER NEED",
+        artist: "AUSTIN MAHONE",
+        youtube: "Wg2no0A8EqQ"
+    },
+
+    {
+        title: "BALANG ARAW",
+        artist: "I BELONG TO THE ZOO",
+        youtube: "hiEaNwg7Fjw"
+    },
+
+    {
+        title: "BECAUSE YOU LOVED ME",
+        artist: "CELINE DION",
+        youtube: "XP1W7CTdwCs"
+    },
+
+    {
         title: "BATANG BATA KA PA",
         artist: "APO HIKING SOCIETY",
         youtube: "KOZ5-FoaTEs"
@@ -109,7 +499,7 @@ const songs = [
     {
         title: "BECAUSE OF YOU",
         artist: "KEITH MARTIN",
-        youtube: "Lx_QVGevCv0"
+        youtube: "ObfXWNaLkfI"
     },
 
     {
