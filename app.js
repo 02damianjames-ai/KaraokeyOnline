@@ -17,6 +17,366 @@
 
 const songs = [
     {
+        title: "FROZEN MEDLEY",
+        artist: "FROZEN OST",
+        youtube: "KTV6_fwUlTQ"
+    },
+
+    {
+        title: "FROM A DISTANCE",
+        artist: "BETTE MIDLER",
+        youtube: "32QDVtc8yaI"
+    },
+
+    {
+        title: "FROM THIS MOMENT",
+        artist: "SHANIA TWAIN",
+        youtube: "WmJv-I0RF2o"
+    },
+
+    {
+        title: "FRIENDS",
+        artist: "MARSHMELLO & ANNE MARIE",
+        youtube: "hEQgtBgM4V4"
+    },
+
+    {
+        title: "FRIEND OF MINE",
+        artist: "ODETTE QUESADA",
+        youtube: "NocD92QHz2U"
+    },
+
+    {
+        title: "FOREVER IS NOT ENOUGH",
+        artist: "SARAH GERONIMO",
+        youtube: "0z1Aqup6NJU"
+    },
+
+    {
+        title: "FOREVER YOUNG",
+        artist: "ALPHAVILLE",
+        youtube: "CEEkhW5bxsI"
+    },
+
+    {
+        title: "FOREVERMORE",
+        artist: "SIDE A",
+        youtube: "23ZdyhN39GI"
+    },
+
+    {
+        title: "FOREVER",
+        artist: "MARTIN NIEVERA & REGINE VELASQUEZ",
+        youtube: "9i0r94HUJSA"
+    },
+
+    {
+        title: "FOREVER",
+        artist: "DAMAGE",
+        youtube: "u81fw-TDzNA"
+    },
+
+    {
+        title: "FOR THE FIRST TIME",
+        artist: "KENNY LOGGINS",
+        youtube: "Bau5wK5iWz8"
+    },
+
+    {
+        title: "FOR ALL OF MY LIFE",
+        artist: "MYMP",
+        youtube: "5yG9idfn2Hg"
+    },
+
+    {
+        title: "FOOLISH HEART",
+        artist: "STEVE PERRY",
+        youtube: "X2b9WhJTbIQ"
+    },
+
+    {
+        title: "FOOL AGAIN",
+        artist: "WESTLIFE",
+        youtube: "SMhWV33sjjQ"
+    },
+
+    {
+        title: "FLYING WITHOUT WINGS",
+        artist: "WESTLIFE",
+        youtube: "5WNibVPzg1s"
+    },
+
+    {
+        title: "FLASHLIGHT",
+        artist: "JESSIE J",
+        youtube: "1f5vdUwJNaE"
+    },
+
+    {
+        title: "FIX YOU",
+        artist: "COLDPLAY",
+        youtube: "Yln9NEMGD_Q"
+    },
+
+    {
+        title: "FIXING A BROKEN HEART",
+        artist: "INDECENT OBSESSION",
+        youtube: "_AAZlrRmPio"
+    },
+
+    {
+        title: "FIRST TRUE LOVE",
+        artist: "KOLOHE KAI",
+        youtube: "CQ1fUgmdHrw"
+    },
+
+    {
+        title: "FIRST LOVE",
+        artist: "REPABLIKAN",
+        youtube: "H063-g42kds"
+    },
+
+    {
+        title: "FIREFLIES",
+        artist: "OWN CITY",
+        youtube: "nrhMvnEp3Us"
+    },
+
+    {
+        title: "FINALLY",
+        artist: "TONY GONZAGA",
+        youtube: "U8LgOVr1zzY"
+    },
+
+    {
+        title: "FIGHT SONG",
+        artist: "RACHEL PLATTERN",
+        youtube: "698_U2rwiQI"
+    },
+
+    {
+        title: "FAVORITE GIRL",
+        artist: "JUSTINE BIEBER",
+        youtube: "2CUphWZfMTg"
+    },
+
+    {
+        title: "FAR AWAY",
+        artist: "NICKELBACK",
+        youtube: "FDwP976YheU"
+    },
+
+    {
+        title: "FALLING IN LOVE",
+        artist: "SIX PART INVENTION",
+        youtube: "7To_S9QmKdM"
+    },
+
+    {
+        title: "FALL FOR YOU",
+        artist: "SECONDHAND SERENADE",
+        youtube: "T3CgZy895Dk"
+    },
+
+    {
+        title: "FALLIN",
+        artist: "JANNO GIBBS",
+        youtube: "Otqd1tuYitk"
+    },
+
+    {
+        title: "FALLIN",
+        artist: "EX BATTALION",
+        youtube: "Fk_1Ao_xdOU"
+    },
+
+    {
+        title: "I FALL APART",
+        artist: "POST MALONE",
+        youtube: "5dR1zbYHJdk"
+    },
+
+    {
+        title: "FAITHFULLY",
+        artist: "JOURNEY",
+        youtube: "Kz2BS8Nk3Ho"
+    },
+
+    {
+        title: "FADED",
+        artist: "ALAN WALKER",
+        youtube: "sHO8nV7BDok"
+    },
+
+    {
+        title: "FLAMES",
+        artist: "JEFFREY HIDALGO",
+        youtube: "4w7i_TbBiKU"
+    },
+
+    {
+        title: "AS LONG AS YOU LOVE ME",
+        artist: "BACKSTREET BOYS",
+        youtube: "h0oahkr7dBk"
+    },
+
+    {
+        title: "DREAM ON",
+        artist: "AEROSMITH",
+        youtube: "x9Sy1jtmB7w"
+    },
+
+    {
+        title: "CANT HELP FALLING IN LOVE WITH YOU",
+        artist: "DANIEL PADILLA",
+        youtube: "wfdzuNnPH-4"
+    },
+
+    {
+        title: "EXCHANGE OF HEARTS",
+        artist: "DAVID SLATER",
+        youtube: "QJkuXjgv6XY"
+    },
+
+    {
+        title: "EWAN",
+        artist: "APO HIKING SOCIETY",
+        youtube: "5SMtq4N_yXg"
+    },
+
+    {
+        title: "EVERYTIME I SEE YOU",
+        artist: "FRA LIPPO LIPPI",
+        youtube: "eE8KuTbO-q8"
+    },
+
+    {
+        title: "EVERYTHING I DO",
+        artist: "BRYAN ADAMS",
+        youtube: "4LiVxS-wqzY"
+    },
+
+    {
+        title: "EVERY DAY I LOVE YOU",
+        artist: "BOYZONE",
+        youtube: "bfXwC1RHzVw"
+    },
+
+    {
+        title: "EVERY BREATH YOU TAKE",
+        artist: "THE POLICE",
+        youtube: "QJn1N4c-4dI"
+    },
+
+    {
+        title: "EVERYTIME",
+        artist: "BRITNEY SPEARS",
+        youtube: "UcoHYJD_12s"
+    },
+
+    {
+        title: "EVERYTIME",
+        artist: "AI",
+        youtube: "G02xTNIJqhs"
+    },
+
+    {
+        title: "EVERY WOMAN IN THE WORLD",
+        artist: "AIR SUPPLY",
+        youtube: "L0mM6ouDCV0"
+    },
+
+    {
+        title: "EVERYTHING",
+        artist: "MICHAEL BUBLE",
+        youtube: "I-tiVbjW3qM"
+    },
+
+    {
+        title: "EVER SINCE THE WORLD BEGAN",
+        artist: "SURVIVOR",
+        youtube: "NfNgX8-62Hs"
+    },
+
+    {
+        title: "EVERGREEN",
+        artist: "WESTLIFE",
+        youtube: "WlJ5TvbU87U"
+    },
+
+    {
+        title: "EVEN IF",
+        artist: "JAM MORALES",
+        youtube: "rYJqg-ZE8SE"
+    },
+
+    {
+        title: "ETERNALLY",
+        artist: "VICTOR WOOD",
+        youtube: "Jj_hCagVn2o"
+    },
+
+    {
+        title: "EROPLANONG PAPEL",
+        artist: "DECEMBER AVENUE",
+        youtube: "IQiPEPUwsRE"
+    },
+
+    {
+        title: "ENDLESS LOVE",
+        artist: "LIONEL & DIANA",
+        youtube: "ZNceJcERiYQ"
+    },
+
+    {
+        title: "END OF THE ROAD",
+        artist: "BOYZ II MEN",
+        youtube: "T11tcRyg95s"
+    },
+
+    {
+        title: "ELISI",
+        artist: "RIVERMAYA",
+        youtube: "oH8Ghijwr4k"
+    },
+
+    {
+        title: "EHU GIRL",
+        artist: "KOLOHE KAI",
+        youtube: "I2avlM223GM"
+    },
+
+    {
+        title: "EVERYTHING I OWN",
+        artist: "BREAD",
+        youtube: "0ZBs517zZ8Y"
+    },
+
+    {
+        title: "EASY ON ME",
+        artist: "ADELE",
+        youtube: "qyAwvd_6NX8"
+    },
+
+    {
+        title: "BEST PART",
+        artist: "DANIEL CAESAR",
+        youtube: "e7wyrTBtXtA"
+    },
+
+    {
+        title: "BLUE",
+        artist: "YUNG KAI",
+        youtube: "zTV7ukt2YVI"
+    },
+
+    {
+        title: "DIE WITH A SMILE",
+        artist: "LADY GAGA & BRUNO MARS",
+        youtube: "ysDYaud3aEU"
+    },
+
+    {
         title: "DUKHA",
         artist: "AEGIS",
         youtube: "EKD8fd5eMrk"
