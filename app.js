@@ -17,6 +17,954 @@
 
 const songs = [
     {
+        title: "HAPPY BIRTHDAY TO YOU",
+        artist: "HBD",
+        youtube: "8u21ODTkK70"
+    },
+
+    {
+        title: "HEAVEN BY YOUR SIDE",
+        artist: "A1",
+        youtube: "8GlRnyKR_jo"
+    },
+
+    {
+        title: "HUWAG MO NANG ITANONG",
+        artist: "ERASERHEADS",
+        youtube: "7TGqtULSfLI"
+    },
+
+    {
+        title: "HUWAG KA NANG MAGBABALIK",
+        artist: "ROSELLE NAVA",
+        youtube: "m5ZMLJxAmPA"
+    },
+
+    {
+        title: "HUWAG KANG MATAKOT",
+        artist: "ERASERHEADS",
+        youtube: "aKje5DQYDXk"
+    },
+
+    {
+        title: "HUMAN",
+        artist: "CHRISTINA PERRI",
+        youtube: "tkUKuCjYlEY"
+    },
+
+    {
+        title: "HULOG NG LANGIT",
+        artist: "DONNA CRUZ",
+        youtube: "SnS3ym9rZ38"
+    },
+
+    {
+        title: "HULING SAYAW",
+        artist: "KAMIKAZEE",
+        youtube: "yuFeUj8uCH0"
+    },
+
+    {
+        title: "HUGOT",
+        artist: "OC DAWGZ",
+        youtube: "kBSDchTK_HY"
+    },
+
+    {
+        title: "HULING GABI",
+        artist: "MOIRA DELA TORRE",
+        youtube: "VbfOA9s2NVM"
+    },
+
+    {
+        title: "HOW WOULD YOU FEEL",
+        artist: "ED SHEERAN",
+        youtube: "YzKoJgcLq2I"
+    },
+
+    {
+        title: "HOW COULD YOU SAY YOU LOVE ME",
+        artist: "SARAH GERONIMO",
+        youtube: "eq8KgdhwkGI"
+    },
+
+    {
+        title: "HOW FAR ILL GO",
+        artist: "ALESSIA CARA",
+        youtube: "mwQDoVdMMDk"
+    },
+
+    {
+        title: "HOW DO YOU HEAL A BROKEN HEART",
+        artist: "CHRIS WALKER",
+        youtube: "pZWt0YAAH4A"
+    },
+
+    {
+        title: "HOW DID YOU KNOW",
+        artist: "GARY V",
+        youtube: "FNnrxY0G4FE"
+    },
+
+    {
+        title: "HOW DEEP IS YOUR LOVE",
+        artist: "BEE GEES",
+        youtube: "DGe7YLb8ajU"
+    },
+
+    {
+        title: "HOW CAN I FALL",
+        artist: "BREATH",
+        youtube: "BP41O7s4tMo"
+    },
+
+    {
+        title: "HOW AM I SUPPOSED TO LIVE WITHOUT YOU",
+        artist: "MICHAEL BOLTON",
+        youtube: "l3zNhIpRWZI"
+    },
+
+    {
+        title: "HOPELESSLY DEVOTED TO YOU",
+        artist: "OLIVIA NEWTON",
+        youtube: "VB-WAdHFmC4"
+    },
+
+    {
+        title: "HOPELESS ROMANTIC",
+        artist: "DARYL ONG",
+        youtube: "wTrdnCILkXM"
+    },
+
+    {
+        title: "HONESTLY",
+        artist: "HAREM SCAREM",
+        youtube: "p-AQM02KL40"
+    },
+
+    {
+        title: "HONEY MY LOVE SO SWEET",
+        artist: "APRIL BOYS",
+        youtube: "0m8vJvC39ec"
+    },
+
+    {
+        title: "HOLD ON",
+        artist: "CHORD OVERSTREET",
+        youtube: "DzF3rMc7yZQ"
+    },
+
+    {
+        title: "HINDING HINDI KITA IIWAN",
+        artist: "ROCKY LAZATIN",
+        youtube: "s2QI9neJU20"
+    },
+
+    {
+        title: "HINDI NA MAGBABAGO",
+        artist: "ERIC SANTOS",
+        youtube: "3AAvVLsEVZg"
+    },
+
+    {
+        title: "HINDI NA BALE",
+        artist: "BUGOY DRILON",
+        youtube: "OwQ4rztXtTw"
+    },
+
+    {
+        title: "HINDI MO BA ALAM",
+        artist: "SIAKOL",
+        youtube: "IWL6-qPVUCE"
+    },
+
+    {
+        title: "HINDI MAGBABAGO",
+        artist: "RANDY SANTIAGO",
+        youtube: "I2EH-aYZ1vU"
+    },
+
+    {
+        title: "HINDI KO KAYANG IWAN KA",
+        artist: "SHERYN REGIS",
+        youtube: "PYIeEnRyGgE"
+    },
+
+    {
+        title: "HINDI AKO LARUAN",
+        artist: "IMELDA PAPIN",
+        youtube: "EhgFBvm-gmY"
+    },
+
+    {
+        title: "HINDI AKO BAKLA",
+        artist: "MICHAEL V",
+        youtube: "DympXKRopVI"
+    },
+
+    {
+        title: "HIMIG NG PAG IBIG",
+        artist: "ASIN",
+        youtube: "C9JLDJDrykc"
+    },
+
+    {
+        title: "HIMIG",
+        artist: "FREDDIE AGUILAR",
+        youtube: "_k0xVVCYBY0"
+    },
+
+    {
+        title: "HIMALA",
+        artist: "YENG & JAY R",
+        youtube: "Nb5f9d1Uk5M"
+    },
+
+    {
+        title: "HIMALA",
+        artist: "RIVERMAYA",
+        youtube: "kSb6l4Lrh24"
+    },
+
+    {
+        title: "HIGIT SA LAHAT AY TAO",
+        artist: "FREDDIE AGUILAR",
+        youtube: "tbXNEIxY7O8"
+    },
+
+    {
+        title: "HILING",
+        artist: "SIAKOL",
+        youtube: "xUx-8FxCudo"
+    },
+
+    {
+        title: "HILING",
+        artist: "SILENT SANCTUARY",
+        youtube: "3UsSObPT3FY"
+    },
+
+    {
+        title: "HILING",
+        artist: "JAY R",
+        youtube: "1FFlzAkA6CQ"
+    },
+
+    {
+        title: "HILING",
+        artist: "MARK CARPIO",
+        youtube: "h56vUYOk3Ok"
+    },
+
+    {
+        title: "HEARTHBREAK ANNIVERSARY",
+        artist: "GIVEON",
+        youtube: "LbEJ7wn0WdI"
+    },
+
+    {
+        title: "HIGHSCHOOL LIFE",
+        artist: "REPABLIKAN",
+        youtube: "0zIVc8Ku0eU"
+    },
+
+    {
+        title: "HIGHSCHOOL LIFE",
+        artist: "SHARON CUNETA",
+        youtube: "_-POsNoXJwY"
+    },
+
+    {
+        title: "HIGHSCHOOL",
+        artist: "SHANTI DOPE",
+        youtube: "59cYRpVGJOM"
+    },
+
+    {
+        title: "HIGH",
+        artist: "THE SPEAKS",
+        youtube: "C7G6s7f9gL4"
+    },
+
+    {
+        title: "HETO AKO",
+        artist: "MICHAEL LAYGO",
+        youtube: "bUxFkk7rgbU"
+    },
+
+    {
+        title: "HESUS",
+        artist: "AEGIS",
+        youtube: "KaHUdeIowGc"
+    },
+
+    {
+        title: "HESUS SA KRUS",
+        artist: "SUPERBOOK",
+        youtube: "QBZj1TGsQvs"
+    },
+
+    {
+        title: "HERO",
+        artist: "ENRIQUE IGLESIAS",
+        youtube: "mN6SyHJcvyE"
+    },
+
+    {
+        title: "HERO",
+        artist: "MARIAH CAREY",
+        youtube: "1nNdPl6O5Sc"
+    },
+
+    {
+        title: "HULING SANDALI",
+        artist: "DECEMBER AVENUE",
+        youtube: "6SnSg-WCHKY"
+    },
+
+    {
+        title: "HNIDI KO KAYA",
+        artist: "VINA MORALES",
+        youtube: "XQRVQwfaVLU"
+    },
+
+    {
+        title: "HNIDI KO KAYA",
+        artist: "RICHARD REYNOSO",
+        youtube: "k6Zzo1jzlRI"
+    },
+
+    {
+        title: "HERE I AM",
+        artist: "AIR SUPPLY",
+        youtube: "x-5yXc-qGo0"
+    },
+
+    {
+        title: "HERE FOR YOU",
+        artist: "FIREHOUSE",
+        youtube: "6Di-lBcNjvw"
+    },
+
+    {
+        title: "HERES YOUR PERFECT",
+        artist: "JAMIE MILLER",
+        youtube: "O2bA60uf1LY"
+    },
+
+    {
+        title: "HALO",
+        artist: "BEYONCE",
+        youtube: "zFnPX0eixWc"
+    },
+
+    {
+        title: "HELLO",
+        artist: "LIONEL RICHIE",
+        youtube: "d1EQoqZ2ehY"
+    },
+
+    {
+        title: "HELLO",
+        artist: "ADELE",
+        youtube: "bkJ6MFGyGt8"
+    },
+
+    {
+        title: "HEAVEN KNOWS",
+        artist: "ORANGE & LEMONS",
+        youtube: "HhUSUhhwWGE"
+    },
+
+    {
+        title: "HEAVEN KNOWS",
+        artist: "RICK PRICE",
+        youtube: "m7o9fbTsRuc"
+    },
+
+    {
+        title: "HEAVEN",
+        artist: "BRYAN ADAMS",
+        youtube: "ZhX527lpXus"
+    },
+
+    {
+        title: "HOTEL CALIFORNIA",
+        artist: "EAGLES",
+        youtube: "bRe1xuzuODQ"
+    },
+
+    {
+        title: "HEART OF MINE",
+        artist: "BOZ SCAGGS",
+        youtube: "_QQufaQlCVo"
+    },
+
+    {
+        title: "HEART OF MINE",
+        artist: "BOBBY CALDWELL",
+        youtube: "je_zdhlSIrk"
+    },
+
+    {
+        title: "HEAL THE WORLD",
+        artist: "MICHAEL JACKSON",
+        youtube: "MM06Ax8W2ts"
+    },
+
+    {
+        title: "HEAL OUR LAND",
+        artist: "JAMIE RIVERA",
+        youtube: "CkFBh-QHRS0"
+    },
+
+    {
+        title: "HAYOP SA GANDA",
+        artist: "143",
+        youtube: "QAnlwd0hGXM"
+    },
+
+    {
+        title: "HAY NAKU",
+        artist: "LJ MANZANAO",
+        youtube: "FgTAHR3lQRQ"
+    },
+
+    {
+        title: "HAWAK MO",
+        artist: "LYKA ESTRELLA",
+        youtube: "6qY8-dV4UcU"
+    },
+
+    {
+        title: "HAWAK KAMAY",
+        artist: "PIOLO PASCUAL",
+        youtube: "ebBTXW9o54Y"
+    },
+
+    {
+        title: "HAWAK KAMAY",
+        artist: "YENG CONSTANTINO",
+        youtube: "5ajZwonIg3E"
+    },
+
+    {
+        title: "HOME",
+        artist: "DAUGHTRY",
+        youtube: "9yTUE706Cc4"
+    },
+
+    {
+        title: "HOME",
+        artist: "MICHAEL BUBLE",
+        youtube: "id1s3thJ970"
+    },
+
+    {
+        title: "HAVING YOU NEAR ME",
+        artist: "AIR SUPPLY",
+        youtube: "VHWSzzzs1co"
+    },
+
+    {
+        title: "HAVE YOU EVER SEEN THE RAIN",
+        artist: "CREDENCE",
+        youtube: "aRwsfUsyeDI"
+    },
+
+    {
+        title: "HARI NG TONDO",
+        artist: "GLOC 9",
+        youtube: "GqmR67nr1l8"
+    },
+
+    {
+        title: "HARI NG SABLAY",
+        artist: "SUGARFREE",
+        youtube: "CLngXGkzslg"
+    },
+
+    {
+        title: "HULING EL BIMBO",
+        artist: "ERASERHEADS",
+        youtube: "G9AC2EMxVXw"
+    },
+
+    {
+        title: "HARANA",
+        artist: "ERASERHEADS",
+        youtube: "V1egmb7rEjs"
+    },
+
+    {
+        title: "HARANA",
+        artist: "PAROKYA NI EDGAR",
+        youtube: "2QcJ8lwbtsE"
+    },
+
+    {
+        title: "HAPPIER",
+        artist: "ED SHEERAN",
+        youtube: "SeUSE-dcImY"
+    },
+
+    {
+        title: "HAPPIER",
+        artist: "OLIVIA RODRIGO",
+        youtube: "p7isfjq4eWY"
+    },
+
+    {
+        title: "HANGGANG NGAYOY MAHAL",
+        artist: "JAYA",
+        youtube: "R1wPdWECpLY"
+    },
+
+    {
+        title: "HANGGANG NGAYON",
+        artist: "OGIE ALCASID",
+        youtube: "TtMAE_y9enU"
+    },
+
+    {
+        title: "HANGGANG NGAYON",
+        artist: "KYLA",
+        youtube: "BB7tnLs3LBY"
+    },
+
+    {
+        title: "HANGGANG KAILAN KITA MAMAHALIN",
+        artist: "ANGELINE QUINTO",
+        youtube: "d0tQnS3S6aw"
+    },
+
+    {
+        title: "HANGGANG DITO NA LANG",
+        artist: "JAYA",
+        youtube: "EYO2zO761wc"
+    },
+
+    {
+        title: "HANGGANG",
+        artist: "WENCY CORNEJO",
+        youtube: "BUg6AYXfMDI"
+    },
+
+    {
+        title: "HANDOG",
+        artist: "FLORANTE",
+        youtube: "qQXdeb0H434"
+    },
+
+    {
+        title: "HALIKA NA LIKA NA",
+        artist: "MAXIE ANDREISON",
+        youtube: "hALZW7kyZd4"
+    },
+
+    {
+        title: "HALL OF FAME",
+        artist: "THE SCRIPT",
+        youtube: "zQNCbO3LuFI"
+    },
+
+    {
+        title: "HINAHANAP HANAP KITA",
+        artist: "RIVERMAYA",
+        youtube: "CbXTC4ZweXw"
+    },
+
+    {
+        title: "HINAHANAP KITA",
+        artist: "JESSA ZARAGOZA",
+        youtube: "d4gnypgklnA"
+    },
+
+    {
+        title: "HALLELUJAH",
+        artist: "BAMBOO",
+        youtube: "azIz5xyYrdY"
+    },
+
+    {
+        title: "HANGGANG KAILAN",
+        artist: "ANGELINE QUINTO",
+        youtube: "mYYtJGkURRA"
+    },
+
+    {
+        title: "HANGGANG KAILAN",
+        artist: "MICHAEL PANGILINAN",
+        youtube: "L1wVjuk1jt4"
+    },
+
+    {
+        title: "HANGGANG KAILAN",
+        artist: "ORANGE & LEMONS",
+        youtube: "6j7JDJvKMiM"
+    },
+
+    {
+        title: "HALIK",
+        artist: "KAMIKAZEE",
+        youtube: "Sn4-NGvWXXg"
+    },
+
+    {
+        title: "HALIK",
+        artist: "AEGIS",
+        youtube: "Gkl7Dxn5zdo"
+    },
+
+    {
+        title: "HAPLOS",
+        artist: "SHAMROCK",
+        youtube: "BZCbx_xRAdQ"
+    },
+
+    {
+        title: "HALAGA",
+        artist: "PAROKYA NI EDGAR",
+        youtube: "DaDWBKABYmU"
+    },
+
+    {
+        title: "HANAP HANAP",
+        artist: "JAMES REID",
+        youtube: "zXxNQcb5t68"
+    },
+
+    {
+        title: "HAGDAN",
+        artist: "RON HENLEY",
+        youtube: "i_uJUi0-meQ"
+    },
+
+    {
+        title: "HABANG IKAW AY NARITO",
+        artist: "MARTIN NIEVERA",
+        youtube: "cPK2zh9gS_s"
+    },
+
+    {
+        title: "HABANG BUHAY",
+        artist: "APRIL BOY",
+        youtube: "YhCa3_gdYmA"
+    },
+
+    {
+        title: "HABANG MAY BUHAY",
+        artist: "AFTER IMAGE",
+        youtube: "4WG7_SjsDOQ"
+    },
+
+    {
+        title: "HABANG BUHAY",
+        artist: "JAM MAGNO",
+        youtube: "aN7JVBt8p7s"
+    },
+
+    {
+        title: "HABANG BUHAY",
+        artist: "ZACK TABUDLO",
+        youtube: "k62xV4XNpEc"
+    },
+
+    {
+        title: "HABAG",
+        artist: "NEY",
+        youtube: "NuFWYuiReuo"
+    },
+
+    {
+        title: "ALA ALA NALANG",
+        artist: "HAMBOG NG SAGPRO",
+        youtube: "OV-fNQRoOI8"
+    },
+
+    {
+        title: "CLASSMATE",
+        artist: "HAMBOG NG SAGPRO",
+        youtube: "KpSOZK39m-M"
+    },
+
+    {
+        title: "DIE FOR YOU",
+        artist: "THE WEEKND",
+        youtube: "CUX9lX7l82I"
+    },
+
+    {
+        title: "DILAW",
+        artist: "MAKI",
+        youtube: "hLqtJTOFKsE"
+    },
+
+    {
+        title: "BE ALRIGHT",
+        artist: "DEAN LEWIS",
+        youtube: "6lmQFvVVglc"
+    },
+
+    {
+        title: "BUMALIK KA NA SAKIN",
+        artist: "SILENT SANCTUARY",
+        youtube: "sH2Gu_FRp-I"
+    },
+
+    {
+        title: "COTABATO",
+        artist: "ASIN",
+        youtube: "OPBqkqcxsZM"
+    },
+
+    {
+        title: "GUSTO KO NANG BUMITAW",
+        artist: "MORISSETTE AMON",
+        youtube: "iGfC7oWfnsg"
+    },
+
+    {
+        title: "GLIMPSE OF US",
+        artist: "JOJI",
+        youtube: "wW2GjB1LIHs"
+    },
+
+    {
+        title: "GUSTO KO SAKIN KA LANG",
+        artist: "ROBLEDO TIMIDO",
+        youtube: "Ny7xbVBq29Q"
+    },
+
+    {
+        title: "BITUING WALANG NINGNING",
+        artist: "SHARON CUNETA",
+        youtube: "xa2y6-lFMmQ"
+    },
+
+    {
+        title: "AKIN KA NA LANG",
+        artist: "MORISSETTE AMON",
+        youtube: "hrN0jz16aBw"
+    },
+
+    {
+        title: "GUSTO KITA",
+        artist: "BAILEY MAY",
+        youtube: "Wl5m24NsO6k"
+    },
+
+    {
+        title: "GUSTO KITA",
+        artist: "GINO PADILLA",
+        youtube: "jrbDYxJj2hk"
+    },
+
+    {
+        title: "GUSTO KITA",
+        artist: "ANGELINE QUINTO",
+        youtube: "Pc3-DDkmc1Q"
+    },
+
+    {
+        title: "GUSTO",
+        artist: "ZACK TABUDLO",
+        youtube: "PSd6bKcZOFw"
+    },
+
+    {
+        title: "GULONG NG PALAD",
+        artist: "EVA EUGENIO",
+        youtube: "_nbcDb14yys"
+    },
+
+    {
+        title: "GUHIT NG PALAD",
+        artist: "IMELDA PAPIN",
+        youtube: "KLLw23jTsZw"
+    },
+
+    {
+        title: "GUGMA",
+        artist: "THE AGADIERS",
+        youtube: "Jhx8Z3SPOkg"
+    },
+
+    {
+        title: "GUGMANG GIATAY",
+        artist: "AMBASSADORS",
+        youtube: "boeYvjHU-Ng"
+    },
+
+    {
+        title: "GRENADE",
+        artist: "BRUNO MARS",
+        youtube: "gR3PtQ_qiMU"
+    },
+
+    {
+        title: "THE GREATEST LOVE OF ALL",
+        artist: "WHITNEY HOUSTON",
+        youtube: "NnDIRVt9CIA"
+    },
+
+    {
+        title: "GET YOU",
+        artist: "DANIEL CAESAR",
+        youtube: "m5SxpSPKWtc"
+    },
+
+    {
+        title: "GOT TO BELIEVE IN MAGIC",
+        artist: "DAVID POMERANZ",
+        youtube: "wOkF68KvsNs"
+    },
+
+    {
+        title: "GOODBYE TO LOVE",
+        artist: "THE CARPENTERS",
+        youtube: "HryflZKfoIk"
+    },
+
+    {
+        title: "GOODBYE GIRL",
+        artist: "BREAD",
+        youtube: "GhUpBSsE1Ds"
+    },
+
+    {
+        title: "GOODBYE",
+        artist: "AIR SUPPLY",
+        youtube: "ddg8qEuN_oM"
+    },
+
+    {
+        title: "GOODBYES NOT FOREVER",
+        artist: "ERIC SANTOS",
+        youtube: "V9eFolQVNjI"
+    },
+
+    {
+        title: "GOD GIVE ME YOU",
+        artist: "BRYAN WHITE",
+        youtube: "M-f9FAIEcNM"
+    },
+
+    {
+        title: "GO ON GIRL",
+        artist: "NE YO",
+        youtube: "zBnwZUEuau8"
+    },
+
+    {
+        title: "GIVE ME A CHANCE",
+        artist: "RIC SEGRETO",
+        youtube: "nGJzlPwEV1Y"
+    },
+
+    {
+        title: "GITARA",
+        artist: "PAROKYA NI EDGAR",
+        youtube: "7dKzvxyAGBU"
+    },
+
+    {
+        title: "GISING NA KAIBIGAN",
+        artist: "ASIN",
+        youtube: "dOygiWMUTzI"
+    },
+
+    {
+        title: "GISINGIN ANG PUSO",
+        artist: "LIEZEL GARCIA",
+        youtube: "COmZedZjPrA"
+    },
+
+    {
+        title: "GIRL",
+        artist: "IMMACULATE",
+        youtube: "gPVdadV2iCs"
+    },
+
+    {
+        title: "GILIW KO",
+        artist: "RENZ VERANO",
+        youtube: "lMPEP-EyoIU"
+    },
+
+    {
+        title: "GILIW",
+        artist: "MARTIN NIEVERA",
+        youtube: "U1Lflr1dt-8"
+    },
+
+    {
+        title: "GILIW",
+        artist: "REGINE VELASQUEZ",
+        youtube: "-ffafxOEM2A"
+    },
+
+    {
+        title: "GHOSTBUSTERS",
+        artist: "RAY PARKER JR",
+        youtube: "DPoLn4tSuu4"
+    },
+
+    {
+        title: "GHOST",
+        artist: "JUSTIN BIEBER",
+        youtube: "4dSrB_K56OU"
+    },
+
+    {
+        title: "GETTING TO KNOW EACH OTHER",
+        artist: "ARIEL RIVERA",
+        youtube: "Yz8QVffoiTU"
+    },
+
+    {
+        title: "GAYUMA",
+        artist: "ABRA FT THYRO",
+        youtube: "7AUrv7PUPN4"
+    },
+
+    {
+        title: "GAYA NG DATI",
+        artist: "GARY V",
+        youtube: "bsCkSaiap6k"
+    },
+
+    {
+        title: "GAWING LANGIT ANG MUNDO",
+        artist: "SIAKOL",
+        youtube: "h80bdtcmr7E"
+    },
+
+    {
+        title: "GANYAN TALAGA ANG PAG IBIG",
+        artist: "APRIL BOY",
+        youtube: "CXo9i-pEGxI"
+    },
+
+    {
+        title: "GABAY",
+        artist: "SIAKOL",
+        youtube: "Xub5ve4xq1E"
+    },
+
+    {
+        title: "DEMONYO",
+        artist: "JUAN KARLOS",
+        youtube: "y29xxqJfMS4"
+    },
+
+    {
+        title: "ERE",
+        artist: "JUAN KARLOS",
+        youtube: "eCQY8V-RJAQ"
+    },
+
+    {
         title: "FROZEN MEDLEY",
         artist: "FROZEN OST",
         youtube: "KTV6_fwUlTQ"
@@ -551,7 +1499,7 @@ const songs = [
     },
 
     {
-        title: "DANCING ONY MY OWN",
+        title: "DANCING ON MY OWN",
         artist: "CALUMM SCOTT",
         youtube: "j7picn_454E"
     },
